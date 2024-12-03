@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+      <PackageReference Include="Serilog.AspNetCore" />
+      <PackageReference Include="Serilog.Sinks.Console" />
+      <PackageReference Include="xunit" />
+      <PackageReference Include="Xunit.Extensions.Ordering" />
+      <PackageReference Include="xunit.runner.visualstudio">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+      <PackageReference Include="coverlet.collector">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
+      <PackageReference Include="FluentAssertions" />
+      <PackageReference Include="Moq" />
+      <PackageReference Update="Microsoft.SourceLink.GitHub" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Uber.Backend.Presentation.SignalR\Uber.Backend.Presentation.SignalR.csproj" />
+      <ProjectReference Include="..\..\src\Uber.Backend.Presentation.Starter\Uber.Backend.Presentation.Starter.csproj" />
+      <ProjectReference Include="..\Uber.Backend.Common.Tests\Uber.Backend.Common.Tests.csproj" />
+    </ItemGroup>
+
+</Project>

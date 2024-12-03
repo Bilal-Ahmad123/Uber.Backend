@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+      <PackageReference Update="Microsoft.SourceLink.GitHub" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="AggregatesModel\ToDoAggregates" />
+      <Folder Include="Exceptions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Uber.Backend.Events\Uber.Backend.Events.csproj" />
+    </ItemGroup>
+
+</Project>

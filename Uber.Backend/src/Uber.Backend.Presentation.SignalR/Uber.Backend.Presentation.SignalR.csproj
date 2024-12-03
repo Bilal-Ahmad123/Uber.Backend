@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <Version>1.0.1</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.SignalR" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Uber.Backend.Application\Uber.Backend.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Uber.Backend.Application" />
+  </ItemGroup>
+
+</Project>

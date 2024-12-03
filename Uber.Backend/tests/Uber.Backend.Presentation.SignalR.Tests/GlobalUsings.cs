@@ -1,0 +1,10 @@
+﻿global using Xunit;
+global using FluentAssertions;
+global using Xunit.Extensions.Ordering;
+global using Microsoft.AspNetCore.Hosting;
+global using Uber.Backend.Common.Tests;
+global using Microsoft.AspNetCore.SignalR.Client;
+global using Uber.Backend.Application.Models;
+global using Uber.Backend.Presentation.SignalR.Hubs;
+global using Uber.Backend.Application.Common.Interfaces;
+global using Uber.Backend.Domain.AggregatesModel.ToDoAggregates.Entities;

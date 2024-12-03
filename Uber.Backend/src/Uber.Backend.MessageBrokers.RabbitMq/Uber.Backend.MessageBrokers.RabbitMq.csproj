@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+      <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+      <PackageReference Include="NKZSoft.Service.Configuration.MassTransit.RabbitMq" />
+      <PackageReference Include="OpenTelemetry.Api" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Uber.Backend.Common\Uber.Backend.Common.csproj" />
+      <ProjectReference Include="..\Uber.Backend.Events\Uber.Backend.Events.csproj" />
+    </ItemGroup>
+  
+</Project>
