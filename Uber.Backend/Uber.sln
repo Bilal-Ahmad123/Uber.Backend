@@ -11,12 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Persistence.SQ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6ED356A7-8B47-4613-AD01-C85CF28491BD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{664D406C-2F83-48F0-BFC3-408D5CB53C65}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.UnitTests", "tests\Application.UnitTests\Application.UnitTests.csproj", "{DEFF4009-1FAB-4392-80B6-707E2DC5C00B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.UnitTests", "tests\Domain.UnitTests\Domain.UnitTests.csproj", "{DC37FD87-552C-4613-9F16-1537CA522898}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E2DA20AA-28D1-455C-BF50-C49A8F831633}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -30,29 +24,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Presentation.Web", "src\Web\Uber.Backend.Presentation.Web.csproj", "{4E4EE20C-F06A-4A1B-851F-C5577796941C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.AcceptanceTests", "tests\Web.AcceptanceTests\Web.AcceptanceTests.csproj", "{21334974-6B07-47BB-B664-AC62FE58C12B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.FunctionalTests", "tests\Application.FunctionalTests\Application.FunctionalTests.csproj", "{EA6127A5-94C9-4C31-AD11-E6811B92B520}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.IntegrationTests", "tests\Infrastructure.IntegrationTests\Infrastructure.IntegrationTests.csproj", "{01FA6786-921D-4CE8-8C50-4FDA66C9477D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E1D260C5-BB6C-4FCA-AA54-5A268BBA5A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.Presentation.SignalR", "SignalR\Uber.Backend.Presentation.SignalR.csproj", "{73292F9D-E701-4742-B182-6B17C6D0F5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Presentation.SignalR", "SignalR\Uber.Backend.Presentation.SignalR.csproj", "{73292F9D-E701-4742-B182-6B17C6D0F5DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.Presentation.GraphQL", "Uber.Backend.Presentation.GraphQL\Uber.Backend.Presentation.GraphQL.csproj", "{91789562-ABC0-479D-B41E-4830351CEEC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Presentation.GraphQL", "Uber.Backend.Presentation.GraphQL\Uber.Backend.Presentation.GraphQL.csproj", "{91789562-ABC0-479D-B41E-4830351CEEC1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D66185C7-F943-49FA-9FD0-C796A738437E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.Redis", "Uber.Backend.Redis\Uber.Backend.Redis.csproj", "{7CCF0F72-7673-4476-957C-AE8A0021CD45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Redis", "Uber.Backend.Redis\Uber.Backend.Redis.csproj", "{7CCF0F72-7673-4476-957C-AE8A0021CD45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.MessageBroker.RabbitMQ", "Uber.Backend.Messaging.RabbitMQ\Uber.Backend.MessageBroker.RabbitMQ.csproj", "{6D2D603D-9F90-4F5B-A6EC-E5F9DB083CCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.MessageBroker.RabbitMQ", "Uber.Backend.Messaging.RabbitMQ\Uber.Backend.MessageBroker.RabbitMQ.csproj", "{6D2D603D-9F90-4F5B-A6EC-E5F9DB083CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.Core", "Uber.Backend.Core\Uber.Backend.Core.csproj", "{99793856-56DF-4662-B488-FB368C9A3D17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Core", "Uber.Backend.Core\Uber.Backend.Core.csproj", "{99793856-56DF-4662-B488-FB368C9A3D17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{957F2BE2-F6D3-41FA-A311-BC0CAEAE4A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uber.Backend.Events", "Uber.Backend.Events\Uber.Backend.Events.csproj", "{95F64C80-19ED-4CCF-9E35-F6F4E16FB37B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Uber.Backend.Events", "Uber.Backend.Events\Uber.Backend.Events.csproj", "{95F64C80-19ED-4CCF-9E35-F6F4E16FB37B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2703F2D1-FF19-4B31-9520-6FCC348027AC}"
 EndProject
@@ -74,30 +62,10 @@ Global
 		{117DA02F-5274-4565-ACC6-DA9B6E568B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{117DA02F-5274-4565-ACC6-DA9B6E568B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{117DA02F-5274-4565-ACC6-DA9B6E568B09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEFF4009-1FAB-4392-80B6-707E2DC5C00B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEFF4009-1FAB-4392-80B6-707E2DC5C00B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEFF4009-1FAB-4392-80B6-707E2DC5C00B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEFF4009-1FAB-4392-80B6-707E2DC5C00B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC37FD87-552C-4613-9F16-1537CA522898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC37FD87-552C-4613-9F16-1537CA522898}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC37FD87-552C-4613-9F16-1537CA522898}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC37FD87-552C-4613-9F16-1537CA522898}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4E4EE20C-F06A-4A1B-851F-C5577796941C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4E4EE20C-F06A-4A1B-851F-C5577796941C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E4EE20C-F06A-4A1B-851F-C5577796941C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E4EE20C-F06A-4A1B-851F-C5577796941C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21334974-6B07-47BB-B664-AC62FE58C12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21334974-6B07-47BB-B664-AC62FE58C12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21334974-6B07-47BB-B664-AC62FE58C12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21334974-6B07-47BB-B664-AC62FE58C12B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA6127A5-94C9-4C31-AD11-E6811B92B520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA6127A5-94C9-4C31-AD11-E6811B92B520}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA6127A5-94C9-4C31-AD11-E6811B92B520}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA6127A5-94C9-4C31-AD11-E6811B92B520}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01FA6786-921D-4CE8-8C50-4FDA66C9477D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01FA6786-921D-4CE8-8C50-4FDA66C9477D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01FA6786-921D-4CE8-8C50-4FDA66C9477D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01FA6786-921D-4CE8-8C50-4FDA66C9477D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{73292F9D-E701-4742-B182-6B17C6D0F5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{73292F9D-E701-4742-B182-6B17C6D0F5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73292F9D-E701-4742-B182-6B17C6D0F5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -130,12 +98,7 @@ Global
 		{C7E89A3E-A631-4760-8D61-BD1EAB1C4E69} = {2703F2D1-FF19-4B31-9520-6FCC348027AC}
 		{34C0FACD-F3D9-400C-8945-554DD6B0819A} = {957F2BE2-F6D3-41FA-A311-BC0CAEAE4A95}
 		{117DA02F-5274-4565-ACC6-DA9B6E568B09} = {D66185C7-F943-49FA-9FD0-C796A738437E}
-		{DEFF4009-1FAB-4392-80B6-707E2DC5C00B} = {664D406C-2F83-48F0-BFC3-408D5CB53C65}
-		{DC37FD87-552C-4613-9F16-1537CA522898} = {664D406C-2F83-48F0-BFC3-408D5CB53C65}
 		{4E4EE20C-F06A-4A1B-851F-C5577796941C} = {E1D260C5-BB6C-4FCA-AA54-5A268BBA5A07}
-		{21334974-6B07-47BB-B664-AC62FE58C12B} = {664D406C-2F83-48F0-BFC3-408D5CB53C65}
-		{EA6127A5-94C9-4C31-AD11-E6811B92B520} = {664D406C-2F83-48F0-BFC3-408D5CB53C65}
-		{01FA6786-921D-4CE8-8C50-4FDA66C9477D} = {664D406C-2F83-48F0-BFC3-408D5CB53C65}
 		{E1D260C5-BB6C-4FCA-AA54-5A268BBA5A07} = {6ED356A7-8B47-4613-AD01-C85CF28491BD}
 		{73292F9D-E701-4742-B182-6B17C6D0F5DB} = {E1D260C5-BB6C-4FCA-AA54-5A268BBA5A07}
 		{91789562-ABC0-479D-B41E-4830351CEEC1} = {E1D260C5-BB6C-4FCA-AA54-5A268BBA5A07}
