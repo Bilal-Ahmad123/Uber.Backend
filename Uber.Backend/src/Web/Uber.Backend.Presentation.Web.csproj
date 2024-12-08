@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SignalR\Uber.Backend.Presentation.SignalR.csproj" />
     <ProjectReference Include="..\Application\Uber.Backend.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Uber.Backend.Persistence.SQL.csproj" />
   </ItemGroup>

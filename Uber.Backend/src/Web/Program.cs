@@ -1,4 +1,7 @@
-using Uber.Infrastructure.Data;
+using Uber.Backend.Presentation.SignalR.Extensions;
+using Uber.Backend.Presentation.SignalR.Hubs;
+using Uber.Infrastructure.Data; 
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +10,8 @@ builder.Services.AddKeyVaultIfConfigured(builder.Configuration);
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddWebServices();
+builder.Services.AddWebServices()
+.AddSignalRPresentation();
 
 var app = builder.Build();
 
@@ -31,12 +35,13 @@ app.UseSwaggerUi(settings =>
     settings.Path = "/api";
     settings.DocumentPath = "/api/specification.json";
 });
-
+app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
 
 app.MapFallbackToFile("index.html");
 
@@ -45,7 +50,7 @@ app.UseExceptionHandler(options => { });
 app.Map("/", () => Results.Redirect("/api"));
 
 app.MapEndpoints();
-
+app.MapHubEndpoints();
 app.Run();
 
 public partial class Program { }
