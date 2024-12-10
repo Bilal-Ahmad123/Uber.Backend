@@ -13,7 +13,26 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices()
 .AddSignalRPresentation();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+});
+
+
+
 var app = builder.Build();
+
+app.UseCors(x => x
+.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,7 +46,6 @@ else
 }
 
 app.UseHealthChecks("/health");
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseSwaggerUi(settings =>
@@ -39,7 +57,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-
 app.MapRazorPages();
 
 
