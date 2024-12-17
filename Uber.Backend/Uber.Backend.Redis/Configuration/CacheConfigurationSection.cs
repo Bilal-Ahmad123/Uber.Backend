@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uber.Backend.Redis.Configuration;
-internal class CacheConfigurationSection
+public class CacheConfigurationSection
 {
+    public const string SectionName = "ConnectionStrings:RedisCacheConnection";
+    public RedisConnection? RedisConnection { get; init; }
+
 }
