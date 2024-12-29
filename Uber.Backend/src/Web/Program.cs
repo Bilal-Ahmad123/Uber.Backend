@@ -1,6 +1,9 @@
+using Microsoft.Extensions.Configuration;
 using Uber.Backend.Presentation.SignalR.Extensions;
 using Uber.Backend.Presentation.SignalR.Hubs;
-using Uber.Infrastructure.Data; 
+using Uber.Infrastructure.Data;
+using StackExchange.Redis;
+using ServiceStack.Redis;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,19 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebServices()
 .AddSignalRPresentation();
+
+builder.Services.AddSingleton<IRedisClientsManager>(c =>
+{
+    var config = builder.Configuration.GetSection("Redis").Get<string[]>();
+    return new RedisManagerPool(config);
+});
+
+// Add Redis as a singleton
+//if (redisConnectionString != null)
+//{
+//    builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+//        ConnectionMultiplexer.Connect(redisConnectionString));
+//}
 
 builder.Services.AddCors(options =>
 {
@@ -64,10 +80,22 @@ app.MapFallbackToFile("index.html");
 
 app.UseExceptionHandler(options => { });
 
-app.Map("/", () => Results.Redirect("/api"));
 
+
+app.Map("/", () => Results.Redirect("/api"));
+app.MapGet("/test-redis", (IRedisClientsManager redisClientsManager) =>
+{
+    using (IRedisClient redis = redisClientsManager.GetClient())
+    {
+        var item = redis.As<string>();
+        item.SetValue("hello","world");
+
+    }
+    return Results.Ok($"Key 'testKey' has value:");
+});
 app.MapEndpoints();
 app.MapHubEndpoints();
+
 app.Run();
 
 public partial class Program { }

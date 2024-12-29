@@ -39,7 +39,8 @@
     <PackageVersion Include="NUnit.Analyzers" Version="3.9.0" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageVersion Include="Respawn" Version="6.2.1" />
-    <PackageVersion Include="StackExchange.Redis" Version="2.8.22" />
+    <PackageVersion Include="ServiceStack.Redis" Version="8.5.2" />
+    <PackageVersion Include="StackExchange.Redis" Version="2.8.24" />
     <PackageVersion Include="Testcontainers.MsSql" Version="3.9.0" />
   </ItemGroup>
 </Project>
