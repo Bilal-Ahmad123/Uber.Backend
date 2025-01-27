@@ -9,11 +9,11 @@ namespace Authentication.Application.Users.Commands.CreateUser.CreateRider
     {
         public CreateRiderCommandValidator()
         {
-            RuleFor(x => x.User.Email).NotNull().WithMessage("Email is Required");
-            RuleFor(x => x.User.FirstName).NotNull().WithMessage("First Name is Required");
-            RuleFor(x => x.User.LastName).NotNull().WithMessage("Last Name is Required");
-            RuleFor(x => x.User.Country).NotNull().WithMessage("Country is Required");
-            RuleFor(x => x.User.ContactNumber).NotNull().WithMessage("Conatct Number is Required");
+            RuleFor(x => x.Rider.Email).NotNull().WithMessage("Email is Required");
+            RuleFor(x => x.Rider.FirstName).NotNull().WithMessage("First Name is Required");
+            RuleFor(x => x.Rider.LastName).NotNull().WithMessage("Last Name is Required");
+            RuleFor(x => x.Rider.Country).NotNull().WithMessage("Country is Required");
+            RuleFor(x => x.Rider.ContactNumber).NotNull().WithMessage("Conatct Number is Required");
         }
     }
 }
