@@ -1,6 +1,3 @@
-services:
-  authentication.api:
-    image: ${DOCKER_REGISTRY-}authenticationapi
-    build:
-      context: .
-      dockerfile: src/Services/Authentication/Authentication.API/Dockerfile
+  services:
+    uberdb:
+        image: mcr.microsoft.com/mssql/server

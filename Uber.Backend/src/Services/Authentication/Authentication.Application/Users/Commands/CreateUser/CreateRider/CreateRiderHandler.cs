@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Authentication.Application.Data;
+using Authentication.Domain.ValueObjects;
 using BuildingBlocks.CQRS;
 using MediatR;
 
@@ -21,6 +22,7 @@ public class CreateRiderHandler(IApplicationDbContext dbContext) : ICommandHandl
     private Rider CreateNewRider(RiderDto riderDto)
     {
         var rider = Rider.Create(
+            UserId.Of(Guid.NewGuid()),
             riderDto.FirstName,
             riderDto.LastName,
             riderDto.Email,

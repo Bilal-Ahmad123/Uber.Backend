@@ -13,7 +13,7 @@ public class Driver : Entity<UserId>
     public string VehicleYear { get; private set; } = default!;
     public string VehicleMake { get; private set; } = default!;
 
-    public static Driver Create(string firstName, string lastName,
+    public static Driver Create(UserId id,string firstName, string lastName,
         string email, string contactNo, string country,
         string vehicleType,string vehicleModel,
         string vehiclePlateNumber, string vehicleColor,
@@ -33,6 +33,7 @@ public class Driver : Entity<UserId>
 
         return new Driver
         {
+            Id = id,
             FirstName = firstName,
             LastName = lastName,
             Email = email,

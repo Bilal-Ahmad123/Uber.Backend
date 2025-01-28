@@ -9,7 +9,7 @@ namespace Authentication.Domain.Models
         public string Email { get; private set; } = default!;
         public string ContactNumber { get; private set; } = default!;
         public string Country { get; private set; } = default!;
-        public static Rider Create(string firstName, string lastName, string email, string contactNo, string country)
+        public static Rider Create(UserId id,string firstName, string lastName, string email, string contactNo, string country)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(firstName);
             ArgumentException.ThrowIfNullOrWhiteSpace(lastName);
@@ -19,6 +19,7 @@ namespace Authentication.Domain.Models
 
             return new Rider
             {
+                Id = id,
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
