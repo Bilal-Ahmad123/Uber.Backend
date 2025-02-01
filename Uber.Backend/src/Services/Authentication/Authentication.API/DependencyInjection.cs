@@ -8,6 +8,17 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApiServices(this IServiceCollection services,IConfiguration configuration)
     {
+       services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+        });
         services.AddCarter();
         services.AddExceptionHandler<CustomExceptionHandler>();
         services.AddHealthChecks()

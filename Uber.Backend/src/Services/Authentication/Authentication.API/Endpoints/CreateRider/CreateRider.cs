@@ -8,7 +8,7 @@ public class CreateRider : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/create/rider", async (CreateRiderRequest request, ISender sender) =>
+        app.MapPost("/api/create/rider", async (CreateRiderRequest request, ISender sender) =>
         {
             var command = request.Adapt<CreateRiderCommand>();
             var result = await sender.Send(command);
