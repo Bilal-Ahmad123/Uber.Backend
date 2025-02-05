@@ -7,4 +7,4 @@ using BuildingBlocks.CQRS;
 
 namespace Authentication.Application.Users.Queries.GetUser;
 public record CheckIfRiderExistsQuery(string Email):IQuery<CheckIfUserExistsResult>;
-public record CheckIfUserExistsResult(bool Exists);
+public record CheckIfUserExistsResult(bool UserExists);
