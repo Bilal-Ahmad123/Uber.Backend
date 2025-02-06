@@ -8,9 +8,9 @@ public class CheckDriverExistsHandler(IApplicationDbContext dbContext) : IQueryH
         var driver = await dbContext.Drivers.FirstOrDefaultAsync(x => x.Email.Equals(query.Email));
         if (driver is not null)
         {
-            return new CheckDriverExistsResult(true);
+            return new CheckDriverExistsResult(driver.Id.Value);
         }
-        return new CheckDriverExistsResult(false);
+        return new CheckDriverExistsResult(Guid.Empty);
 
     }
 }

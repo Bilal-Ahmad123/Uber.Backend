@@ -10,8 +10,10 @@ public class Vehicle:Entity<VehicleId>
     public string VehicleColor { get; private set; } = default!;
     public string VehiclePlateNumber { get; private set; } = default!;
     public string VehicleType { get; private set; } = default!;
+    public Guid DriverId { get; private set; }
 
-    public static Vehicle Create(VehicleId id,string vehicleMake, string vehicleModel, DateTime vehicleYear, string vehicleColor, string vehiclePlateNumber, string vehicleType)
+
+    public static Vehicle Create(VehicleId id,Guid driverId,string vehicleMake, string vehicleModel, DateTime vehicleYear, string vehicleColor, string vehiclePlateNumber, string vehicleType)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(vehicleType);
         ArgumentException.ThrowIfNullOrWhiteSpace(vehicleColor);
@@ -22,6 +24,7 @@ public class Vehicle:Entity<VehicleId>
         return new Vehicle
         {
             Id =id,
+            DriverId = driverId,
             VehicleMake = vehicleMake,
             VehicleModel = vehicleModel,
             VehicleYear = vehicleYear,

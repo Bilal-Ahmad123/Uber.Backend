@@ -3,7 +3,7 @@
 namespace Driver.Application.Dtos.Vehicle;
 public record VehicleDto
 (
-    Guid Id,
+    Guid DriverId,
     string VehicleType,
     string VehicleModel,
     DateTime VehicleYear,

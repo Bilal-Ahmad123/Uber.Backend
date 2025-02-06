@@ -1,6 +1,28 @@
-﻿namespace Driver.API.Endpoints.Vehicle;
+﻿using Carter;
+using Driver.Application.Dtos.Vehicle;
+using Mapster;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
-public class CreateVehicle
+namespace Driver.API.Endpoints.Vehicle;
+
+public record CreateVehicleRequest(VehicleDto Vehicle);
+public record CreateVehicleResponse(Guid Id);
+public class CreateVehicle : ICarterModule
 {
-
+    public void AddRoutes(IEndpointRouteBuilder app)
+    {
+        app.MapPost("api/vehicle/create",async ([FromBody]CreateVehicleRequest command, ISender sender) =>
+        {
+            var request = command.Adapt<CreateVehicleRequest>();
+            var result = await sender.Send(request);
+            var response = result.Adapt<CreateVehicleResponse>();
+            return Results.Ok(response);
+        }).WithName("CreateVehicle")
+        .Produces<CreateVehicleResponse>(StatusCodes.Status200OK)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
+        .ProducesProblem(StatusCodes.Status404NotFound)
+        .WithSummary("Create Vehicle")
+        .WithDescription("Create Vehicle");
+    }
 }

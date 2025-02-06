@@ -9,7 +9,8 @@ public class CreateVehicleCommandValidator : AbstractValidator<CreateVehicleComm
 {
     public CreateVehicleCommandValidator()
     {
-        RuleFor(x=> x.Vehicle.VehicleMake).NotNull().WithMessage("Vehicle Make is Required");
+        RuleFor(x => x.Vehicle.DriverId).NotNull().WithMessage("Driver Id is Required");
+        RuleFor(x => x.Vehicle.VehicleMake).NotNull().WithMessage("Vehicle Make is Required");
         RuleFor(x => x.Vehicle.VehicleModel).NotNull().WithMessage("Vehicle Model is Required");
         RuleFor(x => x.Vehicle.VehicleYear).NotNull().WithMessage("Vehicle Year is Required");
         RuleFor(x => x.Vehicle.VehicleColor).NotNull().WithMessage("Vehicle Color is Required");

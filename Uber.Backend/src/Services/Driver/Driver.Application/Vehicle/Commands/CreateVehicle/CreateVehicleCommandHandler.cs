@@ -17,6 +17,7 @@ public class CreateVehicleCommandHandler(IApplicationDbContext dbContext) : ICom
     {
         var vehicleReq = DriverVehicle.Create(
             VehicleId.Of(Guid.NewGuid()),
+            vehicle.DriverId,
             vehicle.VehicleMake,
             vehicle.VehicleModel,
             vehicle.VehicleYear,

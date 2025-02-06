@@ -1,12 +1,12 @@
 ﻿namespace Authentication.Domain.Models;
-public class Driver : Entity<UserId>
+public class Driver : Entity<DriverId>
 {
     public string FirstName { get; private set; } = default!;
     public string LastName { get; private set; } = default!;
     public string Email { get; private set; } = default!;
     public string ContactNumber { get; private set; } = default!;
     public string Country { get; private set; } = default!;
-    public static Driver Create(UserId id,string firstName, string lastName,
+    public static Driver Create(DriverId id,string firstName, string lastName,
         string email, string contactNo, string country)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(firstName);
