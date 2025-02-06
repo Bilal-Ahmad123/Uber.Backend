@@ -30,29 +30,5 @@ public class DriverConfigurations : IEntityTypeConfiguration<Driver>
         builder.Property(d => d.Country)
                .HasMaxLength(50) 
                .IsRequired();   
-
-        builder.Property(d => d.VehicleType)
-               .HasMaxLength(50) 
-               .IsRequired(false); 
-
-        builder.Property(d => d.VehicleModel)
-               .HasMaxLength(50) 
-               .IsRequired(false); 
-
-        builder.Property(d => d.VehiclePlateNumber)
-               .HasMaxLength(20)
-               .IsRequired(false); 
-
-        builder.Property(d => d.VehicleColor)
-               .HasMaxLength(30) 
-               .IsRequired(false); 
-
-        builder.Property(d => d.VehicleYear)
-               .HasMaxLength(4) 
-               .IsRequired(false); 
-
-        builder.Property(d => d.VehicleMake)
-               .HasMaxLength(50) 
-               .IsRequired(false);
     }
 }

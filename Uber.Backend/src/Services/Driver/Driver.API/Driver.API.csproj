@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Carter" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
+    <ProjectReference Include="..\Driver.Application\Driver.Application.csproj" />
+    <ProjectReference Include="..\Driver.Infrastructure\Driver.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
