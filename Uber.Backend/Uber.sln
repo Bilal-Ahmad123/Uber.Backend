@@ -7,19 +7,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{FDB1DD59-37EC-4211-AD03-7EEE24CCA38B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.API", "src\Services\Authentication\Authentication.API\Authentication.API.csproj", "{45B24C30-7083-48D0-A098-1BF413B3F73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.API", "src\Services\Authentication\Authentication.API\Authentication.API.csproj", "{45B24C30-7083-48D0-A098-1BF413B3F73D}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{5B634290-8A29-41C7-B905-76E7399BC66B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{BC0CF33B-857E-4C98-9B07-502108C2DF2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{27694B8C-13E7-4D10-96A5-CE916F055852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks", "src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj", "{27694B8C-13E7-4D10-96A5-CE916F055852}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenitication.Infrastructure", "src\Services\Authentication\Authenitication.Infrastructure\Authenitication.Infrastructure.csproj", "{6D039EC9-FB41-4A13-83ED-AF394A846422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenitication.Infrastructure", "src\Services\Authentication\Authenitication.Infrastructure\Authenitication.Infrastructure.csproj", "{6D039EC9-FB41-4A13-83ED-AF394A846422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Domain", "src\Services\Authentication\Authentication.Domain\Authentication.Domain.csproj", "{8EECBD70-46D8-4A3F-A06D-0EFF734FBB1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Domain", "src\Services\Authentication\Authentication.Domain\Authentication.Domain.csproj", "{8EECBD70-46D8-4A3F-A06D-0EFF734FBB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Application", "src\Services\Authentication\Authentication.Application\Authentication.Application.csproj", "{9E36697E-5C17-4545-A219-A5352446390F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Application", "src\Services\Authentication\Authentication.Application\Authentication.Application.csproj", "{9E36697E-5C17-4545-A219-A5352446390F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Driver", "Driver", "{5D66B894-90AF-4281-A2C8-709AE0B642D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.API", "src\Services\Driver\Driver.API\Driver.API.csproj", "{FCF550E2-2310-44BF-BBAE-E554AD1C7927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.Infrastructure", "src\Services\Driver\Driver.Infrastructure\Driver.Infrastructure.csproj", "{BF0DB338-70C9-4A52-8434-938C1AA36176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.Domain", "src\Services\Driver\Driver.Domain\Driver.Domain.csproj", "{7E11569D-F449-4B1B-91A9-7C27233AE69D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Driver.Application", "src\Services\Driver\Driver.Application\Driver.Application.csproj", "{385E6559-7F28-47B1-833C-7BD9508593BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +61,22 @@ Global
 		{9E36697E-5C17-4545-A219-A5352446390F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E36697E-5C17-4545-A219-A5352446390F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E36697E-5C17-4545-A219-A5352446390F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF550E2-2310-44BF-BBAE-E554AD1C7927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF550E2-2310-44BF-BBAE-E554AD1C7927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF550E2-2310-44BF-BBAE-E554AD1C7927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF550E2-2310-44BF-BBAE-E554AD1C7927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF0DB338-70C9-4A52-8434-938C1AA36176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF0DB338-70C9-4A52-8434-938C1AA36176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF0DB338-70C9-4A52-8434-938C1AA36176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF0DB338-70C9-4A52-8434-938C1AA36176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E11569D-F449-4B1B-91A9-7C27233AE69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E11569D-F449-4B1B-91A9-7C27233AE69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E11569D-F449-4B1B-91A9-7C27233AE69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E11569D-F449-4B1B-91A9-7C27233AE69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385E6559-7F28-47B1-833C-7BD9508593BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385E6559-7F28-47B1-833C-7BD9508593BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385E6559-7F28-47B1-833C-7BD9508593BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385E6559-7F28-47B1-833C-7BD9508593BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +88,11 @@ Global
 		{6D039EC9-FB41-4A13-83ED-AF394A846422} = {FDB1DD59-37EC-4211-AD03-7EEE24CCA38B}
 		{8EECBD70-46D8-4A3F-A06D-0EFF734FBB1D} = {FDB1DD59-37EC-4211-AD03-7EEE24CCA38B}
 		{9E36697E-5C17-4545-A219-A5352446390F} = {FDB1DD59-37EC-4211-AD03-7EEE24CCA38B}
+		{5D66B894-90AF-4281-A2C8-709AE0B642D9} = {7E4F0534-F858-4473-ACFF-825E18600196}
+		{FCF550E2-2310-44BF-BBAE-E554AD1C7927} = {5D66B894-90AF-4281-A2C8-709AE0B642D9}
+		{BF0DB338-70C9-4A52-8434-938C1AA36176} = {5D66B894-90AF-4281-A2C8-709AE0B642D9}
+		{7E11569D-F449-4B1B-91A9-7C27233AE69D} = {5D66B894-90AF-4281-A2C8-709AE0B642D9}
+		{385E6559-7F28-47B1-833C-7BD9508593BB} = {5D66B894-90AF-4281-A2C8-709AE0B642D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}
