@@ -1,5 +1,6 @@
 ﻿using Carter;
 using Driver.Application.Dtos.Vehicle;
+using Driver.Application.Vehicle.Commands.CreateVehicle;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ public class CreateVehicle : ICarterModule
     {
         app.MapPost("api/vehicle/create",async ([FromBody]CreateVehicleRequest command, ISender sender) =>
         {
-            var request = command.Adapt<CreateVehicleRequest>();
+            var request = command.Adapt<CreateVehicleCommand>();
             var result = await sender.Send(request);
             var response = result.Adapt<CreateVehicleResponse>();
             return Results.Ok(response);

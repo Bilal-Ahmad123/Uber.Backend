@@ -4,7 +4,7 @@ using Authentication.Application.Users.Queries.GetDriver;
 
 namespace Authentication.API.Endpoints.CheckDriverExists;
 
-public record CheckDriverExistsResponse(bool DriverExists);
+public record CheckDriverExistsResponse(Guid DriverExists);
 public class CheckDriverExists:ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)

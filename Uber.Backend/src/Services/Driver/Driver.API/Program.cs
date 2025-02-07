@@ -12,7 +12,8 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 builder.Services.AddApiServices(builder.Configuration)
-    .AddApplicationService(builder.Configuration);
+    .AddApplicationService(builder.Configuration)
+    .AddInfrastructureServices(builder.Configuration);
 
 var app = builder.Build();
 

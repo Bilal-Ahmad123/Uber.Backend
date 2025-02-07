@@ -8,5 +8,5 @@ using BuildingBlocks.CQRS;
 namespace Authentication.Application.Users.Queries.GetDriver;
 public record CheckDriverExistsQuery(string Email):IQuery<CheckDriverExistsResult>;
 
-public record CheckDriverExistsResult(Guid DriverId);
+public record CheckDriverExistsResult(Guid DriverExists);
 

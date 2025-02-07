@@ -57,6 +57,10 @@ public class CustomExceptionHandler
             Instance = context.Request.Path
         };
 
+        if(exception.InnerException != null)
+        {
+            problemDetails.Extensions.Add("innerException", exception.InnerException.Message);
+        }
         problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
 
         if (exception is ValidationException validationException)

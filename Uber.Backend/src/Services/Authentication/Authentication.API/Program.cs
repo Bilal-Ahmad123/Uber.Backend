@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(5231); 
+    options.ListenAnyIP(5232); 
 });
 builder.Services.AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)

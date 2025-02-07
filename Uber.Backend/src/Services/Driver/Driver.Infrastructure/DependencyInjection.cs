@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-using BuildingBlocks.Behaviors;
+﻿using Driver.Application.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.FeatureManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Driver.Infrastructure;
 public static class DependencyInjection

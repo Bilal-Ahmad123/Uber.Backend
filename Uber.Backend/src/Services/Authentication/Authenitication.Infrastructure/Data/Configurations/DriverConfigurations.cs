@@ -7,7 +7,7 @@ public class DriverConfigurations : IEntityTypeConfiguration<Driver>
 
         builder.Property(c => c.Id).HasConversion(
               driverId => driverId.Value,
-              dbId => UserId.Of(dbId)
+              dbId => DriverId.of(dbId)
           );
 
         builder.Property(d => d.FirstName)

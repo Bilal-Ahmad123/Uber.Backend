@@ -20,11 +20,11 @@ public class CreateDriverCommandHandler(IApplicationDbContext dbContext) : IComm
     {
         return Driver.Create(
           DriverId.of(Guid.NewGuid()),
-           driver.Email,
            driver.FirstName,
            driver.LastName,
-           driver.Country,
-           driver.ContactNumber
+           driver.Email,
+           driver.ContactNumber,
+           driver.Country
          );
     }
 

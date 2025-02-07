@@ -6,7 +6,7 @@ public record VehicleDto
     Guid DriverId,
     string VehicleType,
     string VehicleModel,
-    DateTime VehicleYear,
+    string VehicleYear,
     string VehiclePlateNumber,
     string VehicleColor,
     string VehicleMake

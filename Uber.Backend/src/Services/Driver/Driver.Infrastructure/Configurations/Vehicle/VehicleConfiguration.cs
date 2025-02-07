@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Driver.Domain.ValueObjects;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Driver.Infrastructure.Configurations.Vehicle;
 using DriverVehicle = Driver.Domain.Models.Vehicle.Vehicle;
@@ -8,28 +9,36 @@ public class VehicleConfiguration : IEntityTypeConfiguration<DriverVehicle>
     {
         builder.HasKey(x => x.Id);
 
+        builder.Property(d => d.Id).HasConversion(
+            vehicleId => vehicleId.Value,
+            vId => VehicleId.Of(vId)
+            );
+
         builder.Property(d => d.VehicleType)
                .HasMaxLength(50)
-               .IsRequired(false);
+               .IsRequired(true);
 
         builder.Property(d => d.VehicleModel)
                .HasMaxLength(50)
-               .IsRequired(false);
+               .IsRequired(true);
 
         builder.Property(d => d.VehiclePlateNumber)
                .HasMaxLength(20)
-               .IsRequired(false);
+               .IsRequired(true);
 
         builder.Property(d => d.VehicleColor)
                .HasMaxLength(30)
-               .IsRequired(false);
+               .IsRequired(true);
 
         builder.Property(d => d.VehicleYear)
                .HasMaxLength(4)
-               .IsRequired(false);
+               .IsRequired(true);
 
         builder.Property(d => d.VehicleMake)
                .HasMaxLength(50)
-               .IsRequired(false);
+               .IsRequired(true);
+
+        builder.Property(d => d.DriverId)
+            .IsRequired(true);
     }
 }
