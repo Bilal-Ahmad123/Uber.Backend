@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using DriverVehicle =  Driver.Domain.Models.Vehicle.Vehicle;
 namespace Driver.Application.Data;
-using Driver.Domain.Models.Vehicle;
 
 public interface IApplicationDbContext
 {
-    DbSet<Vehicle> Vehicles { get; }
+    DbSet<DriverVehicle> Vehicles { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

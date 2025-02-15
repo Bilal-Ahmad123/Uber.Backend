@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.Exceptions.Handler;
 using Carter;
+using Driver.API.SignalREndpoints.Driver;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -20,6 +21,11 @@ public static class DependencyInjection
                 }
             );
         });
+        services.AddSignalR(options =>
+        {
+            options.EnableDetailedErrors = true;
+            options.KeepAliveInterval = TimeSpan.FromSeconds(10);
+        });
         services.AddCarter();
         services.AddExceptionHandler<CustomExceptionHandler>();
         services.AddHealthChecks()
@@ -30,6 +36,11 @@ public static class DependencyInjection
     public static WebApplication UseApiServices(this WebApplication app)
     {
         app.MapCarter();
+        app.UseCors(x => x
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        app.MapHub<UpdateDriverLocationHub>("/driverhub");
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health");
         new HealthCheckOptions

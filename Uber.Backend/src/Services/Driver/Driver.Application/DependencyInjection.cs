@@ -3,6 +3,7 @@ using BuildingBlocks.Behaviors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
+using BuildingBlocks.Messaging.MassTransit;
 
 namespace Driver.Application;
 public static class DependencyInjection
@@ -16,6 +17,7 @@ public static class DependencyInjection
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
         services.AddFeatureManagement();
+        services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         return services;
     }
 }
