@@ -17,3 +17,9 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  distributedcache:
+    container_name: distributedcache
+    image: redis
+    ports:
+      - "6379:6379"
