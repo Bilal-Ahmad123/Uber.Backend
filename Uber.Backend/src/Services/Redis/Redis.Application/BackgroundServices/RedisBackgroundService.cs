@@ -25,21 +25,27 @@ public class RedisBackgroundService : BackgroundService
             if(message.HasValue)
             {
                 string messageContent = message.ToString();
-                UpdateDriverLocationEvent? driverUpdate = null;
+                UpdateDriverLocation? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                     driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocationEvent>(messageContent);
+                     driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocation>(messageContent);
                 }
                 var riderRadius = 5;
-                var nearbyRiders = await _redis.GeoRadiusAsync("riders:locations", driverUpdate?.Longitude, driverUpdate!.Latitude, GeoUnit.Kilometers, riderRadius);
-                if(nearbyRiders.Length > 0)
+                var nearbyRiders =  _redis.GeoRadius(
+                                "riders:locations",
+                                 driverUpdate!.Longitude, 
+                                 driverUpdate.Latitude,   
+                                 riderRadius,             
+                                GeoUnit.Kilometers      
+                           );
+                if (nearbyRiders.Length > 0)
                 {
                     var riderMessage = JsonSerializer.Serialize(
                         new
                         {
                             DriverId = driverUpdate?.DriverId,
                             Latitude = driverUpdate?.Latitude,
-                            Longitude = driverUpdate?.Longitude
+                            Longitude = driverUpdate?.Longitude,
                             NearbyRiders = nearbyRiders.Select(r => r.Member).ToList()
                         }
                         );

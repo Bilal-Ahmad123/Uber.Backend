@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.FeatureManagement;
 using BuildingBlocks.Messaging.MassTransit;
+using Driver.Application.Data.Repository;
+using StackExchange.Redis;
 
 namespace Driver.Application;
 public static class DependencyInjection
@@ -17,6 +19,12 @@ public static class DependencyInjection
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
         services.AddFeatureManagement();
+        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = configuration.GetConnectionString("Redis");
+        });
+        services.AddScoped<IDriverUpdateLocationRepository, DriverUpdateLocationRepository>();
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         return services;
     }

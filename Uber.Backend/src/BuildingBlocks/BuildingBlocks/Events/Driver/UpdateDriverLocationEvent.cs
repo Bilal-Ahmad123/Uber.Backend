@@ -5,4 +5,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuildingBlocks.Events;
-public record UpdateDriverLocationEvent(Guid DriverId, double Latitude, double Longitude);
+public record UpdateDriverLocation(Guid DriverId, double Latitude, double Longitude);

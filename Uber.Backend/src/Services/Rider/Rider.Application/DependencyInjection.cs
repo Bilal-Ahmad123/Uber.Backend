@@ -1,13 +1,14 @@
-﻿
-using System.Reflection;
-using BuildingBlocks.Messaging.MassTransit;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Redis.Application.BackgroundServices;
-using Redis.Application.Data;
+using Rider.Application.BackgroundServices;
 using StackExchange.Redis;
 
-namespace Redis.Application;
+namespace Rider.Application;
 public static class DependencyInjection
 {
     public static IServiceCollection AddApplicationService(this IServiceCollection services, IConfiguration configuration)
@@ -17,10 +18,8 @@ public static class DependencyInjection
         {
             options.Configuration = configuration.GetConnectionString("Redis");
         });
-        services.AddScoped<IDriverRepository, DriverRepository>();
-        services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
-        services.AddHostedService<RedisBackgroundService>();
-
+        services.AddHostedService<RiderBackgroundService>();
         return services;
     }
+
 }

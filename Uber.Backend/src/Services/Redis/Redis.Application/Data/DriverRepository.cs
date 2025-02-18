@@ -20,7 +20,7 @@ public class DriverRepository : IDriverRepository
         throw new NotImplementedException();
     }
 
-    public  async Task UpdateDriverLocation(UpdateDriverLocationEvent driverLocation)
+    public  async Task UpdateDriverLocation(UpdateDriverLocation driverLocation)
     {
         await _redisDb.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.DriverId.ToString());
     }
