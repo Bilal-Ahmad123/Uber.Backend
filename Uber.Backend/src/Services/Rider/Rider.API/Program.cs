@@ -1,3 +1,4 @@
+using Rider.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationService(builder.Configuration);
