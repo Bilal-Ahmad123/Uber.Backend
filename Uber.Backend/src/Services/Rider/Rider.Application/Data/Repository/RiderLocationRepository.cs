@@ -7,24 +7,25 @@ using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using StackExchange.Redis;
 
-namespace Driver.Application.Data.Repository;
-public class DriverUpdateLocationRepository : IDriverUpdateLocationRepository
+namespace Rider.Application.Data.Repository;
+public class RiderLocationRepository:IRiderLocationRepository
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    public DriverUpdateLocationRepository(IConnectionMultiplexer connection)
+    public RiderLocationRepository(IConnectionMultiplexer connection)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
     }
+
     public void GetDriverLocationUpdate()
     {
         throw new NotImplementedException();
     }
 
-    public async void SendDriverLocationUpdate(UpdateUserLocation driverLocation)
+    public async void SendRiderLocationUpdate(UpdateUserLocation driverLocation)
     {
         var driverLocationMessage = JsonSerializer.Serialize(driverLocation);
-        await _pubsub.PublishAsync(RedisChannel.Literal("driver_location_updates"), driverLocationMessage);
+        await _pubsub.PublishAsync(RedisChannel.Literal("rider_location_updates"), driverLocationMessage);
     }
 }

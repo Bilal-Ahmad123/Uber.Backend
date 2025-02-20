@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Driver.Application.Dtos.Location;
+using BuildingBlocks.Dtos;
 using FluentValidation;
 using MediatR;
 
@@ -14,7 +14,7 @@ public class  UpdateDriverLocationCommandValidator:AbstractValidator<UpdateDrive
 {
     public UpdateDriverLocationCommandValidator()
     {
-        RuleFor(x => x.LocationDto.DriverId).NotNull().WithMessage("Driver Id is Required");
+        RuleFor(x => x.LocationDto.UserId).NotNull().WithMessage("Driver Id is Required");
         RuleFor(x => x.LocationDto.Latitude).NotNull().WithMessage("Latitude is Required");
         RuleFor(x => x.LocationDto.Longitude).NotNull().WithMessage("Longitude is Required");
     }

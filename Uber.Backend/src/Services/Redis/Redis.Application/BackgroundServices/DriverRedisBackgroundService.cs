@@ -9,11 +9,11 @@ using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 
 namespace Redis.Application.BackgroundServices;
-public class RedisBackgroundService : BackgroundService
+public class DriverRedisBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    public RedisBackgroundService(IConnectionMultiplexer connection)
+    public DriverRedisBackgroundService(IConnectionMultiplexer connection)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
@@ -25,10 +25,10 @@ public class RedisBackgroundService : BackgroundService
             if(message.HasValue)
             {
                 string messageContent = message.ToString();
-                UpdateDriverLocation? driverUpdate = null;
+                UpdateUserLocation? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                     driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocation>(messageContent);
+                     driverUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
                 }
                 var riderRadius = 5;
                 var nearbyRiders =  _redis.GeoRadius(

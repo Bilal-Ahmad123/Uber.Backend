@@ -1,5 +1,5 @@
-﻿using Driver.Application.Driver.Commands.UpdateDriverLocation;
-using Driver.Application.Dtos.Location;
+﻿using BuildingBlocks.Dtos;
+using Driver.Application.Driver.Commands.UpdateDriverLocation;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
 

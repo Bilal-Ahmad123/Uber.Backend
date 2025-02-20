@@ -4,7 +4,7 @@ using BuildingBlocks.Messaging.MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Redis.Application.BackgroundServices;
-using Redis.Application.Data;
+using Redis.Application.Data.DriverRepository;
 using StackExchange.Redis;
 
 namespace Redis.Application;
@@ -19,7 +19,7 @@ public static class DependencyInjection
         });
         services.AddScoped<IDriverRepository, DriverRepository>();
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
-        services.AddHostedService<RedisBackgroundService>();
+        services.AddHostedService<DriverRedisBackgroundService>();
 
         return services;
     }

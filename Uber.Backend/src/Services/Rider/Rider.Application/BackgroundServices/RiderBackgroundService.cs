@@ -27,10 +27,10 @@ public class RiderBackgroundService : BackgroundService
             if (message.HasValue)
             {
                 string messageContent = message.ToString();
-                UpdateDriverLocation? driverUpdate = null;
+                UpdateUserLocation? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                    driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocation>(messageContent);
+                    driverUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
                 }
             }
         });

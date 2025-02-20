@@ -4,5 +4,5 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuildingBlocks.Events;
-public record UpdateUserLocation(Guid DriverId, double Latitude, double Longitude);
+namespace BuildingBlocks.Dtos;
+public record UpdateLocationDto(Guid UserId, double Latitude, double Longitude);

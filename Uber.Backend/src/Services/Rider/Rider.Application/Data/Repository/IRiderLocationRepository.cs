@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using BuildingBlocks.Events;
 
-namespace Driver.Application.Data.Repository;
-public interface IDriverUpdateLocationRepository
+namespace Rider.Application.Data.Repository;
+public interface IRiderLocationRepository
 {
-    void SendDriverLocationUpdate(UpdateUserLocation driverLocation);
+    void SendRiderLocationUpdate(UpdateUserLocation driverLocation);
     void GetDriverLocationUpdate();
 }
