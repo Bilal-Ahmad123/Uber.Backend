@@ -3,7 +3,7 @@
 namespace Authentication.API.Endpoints.CreateUser;
 
 public record CreateRiderRequest(RiderDto Rider);
-public record CreateRiderResponse(Guid Id);
+public record CreateRiderResponse(Guid RiderId);
 public class CreateRider : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)

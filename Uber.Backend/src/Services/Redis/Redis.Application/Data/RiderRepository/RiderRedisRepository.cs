@@ -26,6 +26,6 @@ public class RiderRedisRepository : IRiderRedisRepository
 
     public async Task UpdateRiderLocation(UpdateUserLocation riderLocation)
     {
-        await _redisDb.GeoAddAsync("riders:locations", riderLocation.Latitude, riderLocation.Longitude, riderLocation.DriverId.ToString());
+        await _redisDb.GeoAddAsync("riders:locations", riderLocation.Longitude, riderLocation.Latitude, riderLocation.DriverId.ToString());
     }
 }

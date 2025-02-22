@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Redis.Application.BackgroundServices;
 using Redis.Application.Data.DriverRepository;
+using Redis.Application.Data.RiderRepository;
 using StackExchange.Redis;
 
 namespace Redis.Application;
@@ -18,8 +19,10 @@ public static class DependencyInjection
             options.Configuration = configuration.GetConnectionString("Redis");
         });
         services.AddScoped<IDriverRepository, DriverRepository>();
+        services.AddSingleton<IRiderRedisRepository, RiderRedisRepository>();
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         services.AddHostedService<DriverRedisBackgroundService>();
+        services.AddHostedService<RiderRedisBackgroundService>();
 
         return services;
     }

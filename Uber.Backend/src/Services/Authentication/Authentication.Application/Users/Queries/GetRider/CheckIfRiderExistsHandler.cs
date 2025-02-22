@@ -9,8 +9,8 @@ public class CheckIfRiderExistsHandler(IApplicationDbContext dbContext) : IQuery
         var user = await dbContext.Riders.FirstOrDefaultAsync(u => u.Email.Equals(request.Email));
         if (user is not null)
         {
-            return new CheckIfUserExistsResult(true);
+            return new CheckIfUserExistsResult(user.Id.Value);
         }
-        return new CheckIfUserExistsResult(false);
+        return new CheckIfUserExistsResult(Guid.Empty);
     }
 }

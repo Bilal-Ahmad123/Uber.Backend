@@ -4,7 +4,7 @@ using BuildingBlocks.CQRS;
 namespace Authentication.Application.Users.Commands.CreateUser.CreateRider
 {
     public record CreateRiderCommand(RiderDto Rider) : ICommand<CreateRiderResult>;
-    public record CreateRiderResult(Guid Id);
+    public record CreateRiderResult(Guid RiderId);
     public class CreateRiderCommandValidator : AbstractValidator<CreateRiderCommand>
     {
         public CreateRiderCommandValidator()

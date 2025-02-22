@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Authentication.API.Endpoints.CheckUserExists;
 
-public record CheckUserExistsRequest(string Email);
-public record CheckUserExistsResponse(bool UserExists);
+public record CheckUserExistsResponse(Guid RiderId);
 public class CheckRiderExists : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
