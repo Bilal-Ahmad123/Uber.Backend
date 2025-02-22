@@ -22,6 +22,6 @@ public class DriverRepository : IDriverRepository
 
     public async Task UpdateDriverLocation(UpdateUserLocation driverLocation)
     {
-        await _redisDb.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.DriverId.ToString());
+        await _redisDb.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.UserId.ToString());
     }
 }

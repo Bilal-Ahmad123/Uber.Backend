@@ -43,7 +43,7 @@ public class DriverRedisBackgroundService : BackgroundService
                     var riderMessage = JsonSerializer.Serialize(
                         new
                         {
-                            DriverId = driverUpdate?.DriverId,
+                            UserId = driverUpdate?.UserId,
                             Latitude = driverUpdate?.Latitude,
                             Longitude = driverUpdate?.Longitude,
                             NearbyRiders = nearbyRiders.Select(r => r.Member).ToList()
