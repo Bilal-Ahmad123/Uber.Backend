@@ -2,7 +2,6 @@
 using Carter;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Rider.API.SignalREndpoints.Rider;
 
 namespace Rider.API;
 
@@ -40,7 +39,6 @@ public static class DependencyInjection
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
-        app.MapHub<UpdateRiderLocationHub>("/riderhub");
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health");
         new HealthCheckOptions

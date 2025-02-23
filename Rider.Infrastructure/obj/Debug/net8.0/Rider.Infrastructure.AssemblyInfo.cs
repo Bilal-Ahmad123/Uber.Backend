@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rider.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85a38456a5f073187a79e2078c8d213ced825fcb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12225467eb2b8cb070cbd33ceefcfc7fda7c2d58")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rider.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rider.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

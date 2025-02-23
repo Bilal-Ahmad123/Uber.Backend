@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Rider.Application.Data.Services;
+using Rider.Domain.Models;
 using StackExchange.Redis;
 
-namespace Rider.Application.BackgroundServices;
+namespace Rider.Infrastructure.BackgroundServices;
 public class RiderBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    public RiderBackgroundService(IConnectionMultiplexer connection)
+    private readonly ISignalRService _signalRService;
+    public RiderBackgroundService(IConnectionMultiplexer connection, ISignalRService signalRService)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
+        _signalRService = signalRService;
 
     }
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -27,11 +31,12 @@ public class RiderBackgroundService : BackgroundService
             if (message.HasValue)
             {
                 string messageContent = message.ToString();
-                UpdateUserLocation? driverUpdate = null;
+                DriverPositionWithRiders? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                    driverUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
+                    driverUpdate = JsonSerializer.Deserialize<DriverPositionWithRiders>(messageContent);
                 }
+                _signalRService.SendDriverLocationToRiders(driverUpdate);
             }
         });
         return Task.CompletedTask;

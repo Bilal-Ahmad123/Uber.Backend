@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using BuildingBlocks.CQRS;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Rider.Application.Data.Repository;
+using Rider.Application.Data.Services;
 using RiderLocation = BuildingBlocks.Events.UpdateUserLocation;
 
 namespace Rider.Application.Rider.Commands.UpdateRiderLocation;
-public class UpdateRiderLocationCommandHandler(ILogger<UpdateRiderLocationCommandHandler> logger, IRiderLocationRepository repository) : ICommandHandler<UpdateRiderLocationCommand, Unit>
+public class UpdateRiderLocationCommandHandler(ILogger<UpdateRiderLocationCommandHandler> logger, IRiderLocationService repository) : ICommandHandler<UpdateRiderLocationCommand, Unit>
 {
     public Task<Unit> Handle(UpdateRiderLocationCommand request, CancellationToken cancellationToken)
     {

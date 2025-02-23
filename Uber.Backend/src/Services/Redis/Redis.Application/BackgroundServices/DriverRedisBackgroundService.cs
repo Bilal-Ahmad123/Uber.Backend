@@ -46,7 +46,7 @@ public class DriverRedisBackgroundService : BackgroundService
                             UserId = driverUpdate?.UserId,
                             Latitude = driverUpdate?.Latitude,
                             Longitude = driverUpdate?.Longitude,
-                            NearbyRiders = nearbyRiders.Select(r => r.Member).ToList()
+                            Riders = nearbyRiders.Select(r => r.Member.ToString()).ToList()
                         }
                         );
                     await _pubsub.PublishAsync(RedisChannel.Literal("nearby_driver_updates"), riderMessage);

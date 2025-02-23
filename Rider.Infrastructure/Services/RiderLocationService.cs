@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
 using System.Text.Json;
-using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Microsoft.Extensions.Logging;
+using Rider.Application.Data.Services;
 using StackExchange.Redis;
 
-namespace Rider.Application.Data.Repository;
-public class RiderLocationRepository:IRiderLocationRepository
+namespace Rider.Infrastructure.Services;
+public class RiderLocationService:IRiderLocationService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
     private readonly ILogger _logger;
-    public RiderLocationRepository(IConnectionMultiplexer connection,ILogger<RiderLocationRepository> logger)
+    public RiderLocationService(IConnectionMultiplexer connection,ILogger<RiderLocationService> logger)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();

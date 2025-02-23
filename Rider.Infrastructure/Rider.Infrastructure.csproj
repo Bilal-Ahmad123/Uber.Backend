@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Uber.Backend\src\Services\Rider\Rider.Application\Rider.Application.csproj" />
+  </ItemGroup>
+
 </Project>

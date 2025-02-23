@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using BuildingBlocks.Behaviors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rider.Application.BackgroundServices;
-using Rider.Application.Data.Repository;
 using StackExchange.Redis;
 
 namespace Rider.Application;
@@ -27,8 +25,6 @@ public static class DependencyInjection
         {
             options.Configuration = configuration.GetConnectionString("Redis");
         });
-        services.AddHostedService<RiderBackgroundService>();
-        services.AddScoped<IRiderLocationRepository, RiderLocationRepository>();
         return services;
     }
 
