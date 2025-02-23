@@ -20,6 +20,13 @@ public static class DependencyInjection
                     .AllowAnyHeader();
                 }
             );
+            options.AddPolicy("reactapp", builder =>
+            {
+                builder.WithOrigins("http://localhost:5173")
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .AllowCredentials();
+            });
         });
         services.AddSignalR(options =>
         {
@@ -36,10 +43,7 @@ public static class DependencyInjection
     public static WebApplication UseApiServices(this WebApplication app)
     {
         app.MapCarter();
-        app.UseCors(x => x
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+        app.UseCors("reactapp");
         app.MapHub<UpdateDriverLocationHub>("/driverhub");
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health");
