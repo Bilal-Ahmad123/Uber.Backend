@@ -10,7 +10,7 @@ using Rider.Infrastructure.SignalREndpoints.Rider;
 namespace Rider.Infrastructure.Services;
 public class SignalRService(IConnectionManager connectionManager, IHubContext<UpdateRiderLocationHub> hubContext,ILogger<SignalRService> logger) : ISignalRService
 {
-    public void SendDriverLocationToRiders(DriverPositionWithRiders driverPositionWithRiders)
+    public async void SendDriverLocationToRiders(DriverPositionWithRiders driverPositionWithRiders)
     {
         foreach (var item in driverPositionWithRiders.Riders)
         {
@@ -19,10 +19,10 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
             {
                 try
                 {
-                    hubContext.Clients.Client(connectionId).SendAsync("DriverLocationUpdate", 
-                        driverPositionWithRiders.UserId,
-                        driverPositionWithRiders.Longitude,
-                        driverPositionWithRiders.Latitude
+                   await hubContext.Clients.Client(connectionId).SendAsync("DriverLocationUpdate", 
+                       driverPositionWithRiders.UserId,
+                       driverPositionWithRiders.Longitude,
+                       driverPositionWithRiders.Latitude
                     );
                 }
                 catch(Exception e)

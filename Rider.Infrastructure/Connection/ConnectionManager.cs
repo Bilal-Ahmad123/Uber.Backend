@@ -14,7 +14,7 @@ public class ConnectionManager:IConnectionManager
 
     public void AddConnection(Guid userId, string connectionId)
     {
-        _connectedClients.TryAdd(userId, connectionId);
+        _connectedClients.AddOrUpdate(userId, connectionId,(key,existing)=>connectionId);
     }
 
     public void RemoveConnection(string connectionId)

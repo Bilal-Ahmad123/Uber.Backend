@@ -36,7 +36,7 @@ public class UpdateRiderLocationHub(ISender sender,ILogger<UpdateRiderLocationHu
     public override Task OnDisconnectedAsync(Exception? exception)
     {
         var connectionId = Context.ConnectionId;
-        //connectionManager.RemoveConnection(connectionId);
+        connectionManager.RemoveConnection(connectionId);
         return base.OnDisconnectedAsync(exception);
     }
 }
