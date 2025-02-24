@@ -3546,8 +3546,8 @@
     },
     "Rider.Domain/1.0.0": {
       "type": "project",
-      "path": "../Rider.Domain/Rider.Domain.csproj",
-      "msbuildProject": "../Rider.Domain/Rider.Domain.csproj"
+      "path": "../Uber.Backend/src/Services/Rider/Rider.Domain/Rider.Domain.csproj",
+      "msbuildProject": "../Uber.Backend/src/Services/Rider/Rider.Domain/Rider.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {

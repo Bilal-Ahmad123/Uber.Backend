@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Uber.Backend\src\Services\Rider\Rider.Application\Rider.Application.csproj" />
+    <ProjectReference Include="..\Rider.Application\Rider.Application.csproj" />
   </ItemGroup>
 
 </Project>
