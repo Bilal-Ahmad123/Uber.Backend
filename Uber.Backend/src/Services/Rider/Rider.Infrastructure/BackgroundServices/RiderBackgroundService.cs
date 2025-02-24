@@ -36,7 +36,7 @@ public class RiderBackgroundService : BackgroundService
                 {
                     driverUpdate = JsonSerializer.Deserialize<DriverPositionWithRiders>(messageContent);
                 }
-                _signalRService.SendDriverLocationToRiders(driverUpdate);
+                _signalRService.SendDriverLocationToRiders(driverUpdate!);
             }
         });
         return Task.CompletedTask;

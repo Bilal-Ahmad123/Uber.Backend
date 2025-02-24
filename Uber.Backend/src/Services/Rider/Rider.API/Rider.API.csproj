@@ -15,8 +15,8 @@
     </PackageReference>
     <PackageReference Include="Carter" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
-    <ProjectReference Include="..\..\..\..\..\Rider.Infrastructure\Rider.Infrastructure.csproj" />
     <ProjectReference Include="..\Rider.Application\Rider.Application.csproj" />
+    <ProjectReference Include="..\Rider.Infrastructure\Rider.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
