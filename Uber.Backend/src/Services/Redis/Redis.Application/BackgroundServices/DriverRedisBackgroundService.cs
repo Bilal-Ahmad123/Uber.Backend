@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Microsoft.Extensions.Hosting;
+using Redis.Application.Data.DriverRepository;
 using StackExchange.Redis;
 
 namespace Redis.Application.BackgroundServices;
@@ -13,10 +14,12 @@ public class DriverRedisBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    public DriverRedisBackgroundService(IConnectionMultiplexer connection)
+    private readonly IDriverRepository _driverRepository;
+    public DriverRedisBackgroundService(IConnectionMultiplexer connection,IDriverRepository driverRepository)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
+        _driverRepository = driverRepository;
     }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -29,6 +32,7 @@ public class DriverRedisBackgroundService : BackgroundService
                 if (!string.IsNullOrEmpty(messageContent))
                 {
                      driverUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
+                    await _driverRepository.UpdateDriverLocation(driverUpdate!);
                 }
                 var riderRadius = 5;
                 var nearbyRiders =  _redis.GeoRadius(

@@ -33,6 +33,6 @@ internal class DriverRedisBackgroundService : BackgroundService
                     rideRequest = JsonSerializer.Deserialize<RiderRequestedLocation>(messageContent);
                 }
             }
-        })
+        });
     }
 }
