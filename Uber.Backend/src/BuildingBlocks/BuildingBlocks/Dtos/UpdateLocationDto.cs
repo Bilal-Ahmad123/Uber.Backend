@@ -5,4 +5,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuildingBlocks.Dtos;
-public record UpdateLocationDto(Guid UserId, double Latitude, double Longitude);
+public record UpdateLocationDto(Guid UserId, double Latitude, double Longitude, string VehicleType);

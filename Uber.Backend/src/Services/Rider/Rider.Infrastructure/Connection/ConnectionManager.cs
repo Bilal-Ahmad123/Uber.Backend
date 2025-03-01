@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Rider.Application.Common;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace Rider.Application.ServiceManager;
+namespace Rider.Infrastructure.Connection;
 public class ConnectionManager:IConnectionManager
 {
     private readonly ConcurrentDictionary<Guid, string> _connectedClients = new();

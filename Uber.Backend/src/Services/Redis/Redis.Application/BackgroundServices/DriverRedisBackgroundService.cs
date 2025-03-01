@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Events;
+using BuildingBlocks.Models.Driver;
 using Microsoft.Extensions.Hosting;
 using Redis.Application.Data.DriverRepository;
 using StackExchange.Redis;
@@ -28,10 +29,10 @@ public class DriverRedisBackgroundService : BackgroundService
             if(message.HasValue)
             {
                 string messageContent = message.ToString();
-                UpdateUserLocation? driverUpdate = null;
+                UpdateDriverLocation? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                     driverUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
+                     driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocation>(messageContent);
                     await _driverRepository.UpdateDriverLocation(driverUpdate!);
                 }
                 var riderRadius = 5;
@@ -50,6 +51,7 @@ public class DriverRedisBackgroundService : BackgroundService
                             UserId = driverUpdate?.UserId,
                             Latitude = driverUpdate?.Latitude,
                             Longitude = driverUpdate?.Longitude,
+                            VehicleType = driverUpdate?.VehicleType,
                             Riders = nearbyRiders.Select(r => r.Member.ToString()).ToList()
                         }
                         );

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Driver.Application.ConnectionManager;
 
-namespace Driver.Infrastructure.ConnectionManager;
+namespace Driver.Infrastructure.Connection;
 public class ConnectionManager:IConnectionManager
 {
     private readonly ConcurrentDictionary<Guid, string> _connectedClients = new();

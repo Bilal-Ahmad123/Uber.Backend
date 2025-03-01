@@ -44,7 +44,6 @@ public static class DependencyInjection
     {
         app.MapCarter();
         app.UseCors("reactapp");
-        app.MapHub<UpdateDriverLocationHub>("/driverhub");
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health");
         new HealthCheckOptions

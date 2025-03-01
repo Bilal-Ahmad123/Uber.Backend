@@ -3,7 +3,7 @@ using Driver.Application.Data.Repository;
 using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using DriverLocation = BuildingBlocks.Events.UpdateUserLocation;
+using DriverLocation = BuildingBlocks.Models.Driver.UpdateDriverLocation;
 namespace Driver.Application.Driver.Commands.UpdateDriverLocation;
 public class UpdateDriverLocationHandler(ILogger<UpdateDriverLocationCommand> logger,IDriverUpdateLocationRepository repository) : ICommandHandler<UpdateDriverLocationCommand, Unit>
 {
@@ -13,7 +13,9 @@ public class UpdateDriverLocationHandler(ILogger<UpdateDriverLocationCommand> lo
         (
            request.LocationDto.UserId,
            request.LocationDto.Latitude,
-           request.LocationDto.Longitude
+           request.LocationDto.Longitude,
+           request.LocationDto.VehicleType
+
         );
         logger.LogInformation("Driver Location Recieved");
         repository.SendDriverLocationUpdate(eventMessage);

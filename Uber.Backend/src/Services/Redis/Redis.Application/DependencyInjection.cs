@@ -23,6 +23,7 @@ public static class DependencyInjection
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         services.AddHostedService<DriverRedisBackgroundService>();
         services.AddHostedService<RiderRedisBackgroundService>();
+        services.AddHostedService<RideRequestBackgroundService>();
 
         return services;
     }

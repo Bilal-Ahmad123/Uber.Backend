@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Events;
+using BuildingBlocks.Models.Driver;
 using StackExchange.Redis;
 
 namespace Driver.Application.Data.Repository;
@@ -22,7 +23,7 @@ public class DriverUpdateLocationRepository : IDriverUpdateLocationRepository
         throw new NotImplementedException();
     }
 
-    public async void SendDriverLocationUpdate(UpdateUserLocation driverLocation)
+    public async void SendDriverLocationUpdate(UpdateDriverLocation driverLocation)
     {
         var driverLocationMessage = JsonSerializer.Serialize(driverLocation);
         await _pubsub.PublishAsync(RedisChannel.Literal("driver_location_updates"), driverLocationMessage);

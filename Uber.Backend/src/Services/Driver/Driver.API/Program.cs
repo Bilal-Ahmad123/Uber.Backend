@@ -14,9 +14,8 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddApiServices(builder.Configuration)
     .AddApplicationService(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration);
-
 var app = builder.Build();
-
+app.AddHub();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();

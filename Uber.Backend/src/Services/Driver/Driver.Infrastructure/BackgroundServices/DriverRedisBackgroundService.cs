@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Models.Rider;
+using Driver.Application.Services;
 using Driver.Domain.Models.RiderLocation;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
@@ -14,15 +15,18 @@ namespace Driver.Infrastructure.BackgroundServices;
 internal class DriverRedisBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
+    private readonly ISignalRService _signalRService;
     private readonly ISubscriber _pubsub;
-    public DriverRedisBackgroundService(IConnectionMultiplexer connection)
+    public DriverRedisBackgroundService(IConnectionMultiplexer connection,ISignalRService signalRService)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
+        _signalRService = signalRService;
+
     }
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _pubsub.SubscribeAsync(RedisChannel.Literal("driver_ride_request_recieved"), (channel, message) =>
+       await _pubsub.SubscribeAsync(RedisChannel.Literal("driver_ride_request_recieved"), (channel, message) =>
         {
             if (message.HasValue)
             {
@@ -32,6 +36,8 @@ internal class DriverRedisBackgroundService : BackgroundService
                 {
                     rideRequest = JsonSerializer.Deserialize<RiderRequestedLocation>(messageContent);
                 }
+                _signalRService.SendRideRequestToDriver(rideRequest!);
+
             }
         });
     }

@@ -22,7 +22,8 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
                    await hubContext.Clients.Client(connectionId).SendAsync("DriverLocationUpdate", 
                        driverPositionWithRiders.UserId,
                        driverPositionWithRiders.Longitude,
-                       driverPositionWithRiders.Latitude
+                       driverPositionWithRiders.Latitude,
+                       driverPositionWithRiders.VehicleType
                     );
                 }
                 catch(Exception e)
