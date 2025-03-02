@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Carter" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks.Messaging\BuildingBlocks.Messaging.csproj" />
     <ProjectReference Include="..\Rider.Application\Rider.Application.csproj" />
     <ProjectReference Include="..\Rider.Infrastructure\Rider.Infrastructure.csproj" />
   </ItemGroup>
