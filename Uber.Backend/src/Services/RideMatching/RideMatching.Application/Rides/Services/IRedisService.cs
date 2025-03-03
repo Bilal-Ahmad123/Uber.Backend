@@ -12,5 +12,6 @@ namespace RideMatching.Application.Rides.Services
     {
         void StoreRideRequest(RequestRideEvent rideRequest);
         Task<IList<Guid>> FindNearbyDrivers(Guid riderId);
+        void LockRideRequest(Guid rideId, Guid driverId);
     }
 }

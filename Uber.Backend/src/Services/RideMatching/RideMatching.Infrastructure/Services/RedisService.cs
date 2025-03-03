@@ -31,9 +31,15 @@ namespace RideMatching.Infrastructure.Services
             return nearbyDrivers.Select(r => Guid.Parse(r.Member.ToString())).ToList();
         }
 
+        public async void LockRideRequest(Guid rideId,Guid driverId)
+        {
+            var lockKey = $"ride_lock:{rideId}";
+            await _redisDb.LockTakeAsync(lockKey, driverId.ToString(),TimeSpan.FromSeconds(10));
+        }
+
         public void StoreRideRequest(RequestRideEvent rideRequest)
         {
-            _redisDb.StringSet(rideRequest.RiderId.ToString(), JsonSerializer.Serialize(rideRequest),TimeSpan.FromSeconds(6000));
+            _redisDb.StringSet(rideRequest.RideId.ToString(), JsonSerializer.Serialize(rideRequest),TimeSpan.FromSeconds(6000));
         }
 
     }
