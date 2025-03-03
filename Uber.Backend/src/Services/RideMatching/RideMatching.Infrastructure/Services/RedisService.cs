@@ -39,7 +39,7 @@ namespace RideMatching.Infrastructure.Services
 
         public void StoreRideRequest(RequestRideEvent rideRequest)
         {
-            _redisDb.StringSet(rideRequest.RideId.ToString(), JsonSerializer.Serialize(rideRequest),TimeSpan.FromSeconds(6000));
+            _redisDb.StringSet(rideRequest.RideId.ToString(), JsonSerializer.Serialize(rideRequest),TimeSpan.FromSeconds(60));
         }
 
     }
