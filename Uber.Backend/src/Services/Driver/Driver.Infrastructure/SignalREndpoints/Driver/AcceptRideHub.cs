@@ -11,9 +11,9 @@ namespace Driver.Infrastructure.SignalREndpoints.Driver
 {
     public class AcceptRideHub(ISender sender) : Hub
     {
-        public async Task AcceptRide(Guid riderId, Guid driverId)
+        public async Task AcceptRide(Guid rideId, Guid driverId)
         {
-            await sender.Send(new AcceptRideCommand(new BuildingBlocks.Models.Ride.AcceptRideRequest(driverId, riderId));
+            await sender.Send(new AcceptRideCommand(new BuildingBlocks.Models.Ride.AcceptRideRequest(driverId, rideId));
         }
     }
 }

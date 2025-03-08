@@ -4,5 +4,5 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuildingBlocks.Models.Ride;
-public record AcceptRideRequest(Guid DriverId, Guid RideId);
+namespace BuildingBlocks.Messaging.Events;
+public record NotifyRiderRideAcceptedEvent(Guid RiderId, Guid DriverId);

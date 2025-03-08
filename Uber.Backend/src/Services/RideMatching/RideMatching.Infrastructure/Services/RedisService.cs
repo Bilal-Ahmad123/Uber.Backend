@@ -42,5 +42,25 @@ namespace RideMatching.Infrastructure.Services
             _redisDb.StringSet(rideRequest.RideId.ToString(), JsonSerializer.Serialize(rideRequest),TimeSpan.FromSeconds(60));
         }
 
+        public Guid GetRiderId(Guid rideId)
+        {
+            var rideRequest = _redisDb.StringGet(rideId.ToString());
+
+            if (rideRequest.IsNullOrEmpty)
+            {
+                throw new InvalidOperationException($"No ride request found for rideId: {rideId}");
+            }
+
+            var request = JsonSerializer.Deserialize<RequestRideEvent>(rideRequest.ToString());
+
+            if (request == null)
+            {
+                throw new InvalidOperationException("Failed to deserialize ride request.");
+            }
+
+            return request.RiderId;
+        }
+
+
     }
 }

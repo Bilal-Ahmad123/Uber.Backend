@@ -33,4 +33,20 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
             }
         }
     }
+
+    public async void NotifyRiderRideAccepted(Guid riderId)
+    {
+        var connectionId = connectionManager.GetConnectionId(riderId);
+        if (connectionId != null)
+        {
+            try
+            {
+                await hubContext.Clients.Client(connectionId).SendAsync("RideAccepted", riderId);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.ToString());
+            }
+        }
+    }
 }

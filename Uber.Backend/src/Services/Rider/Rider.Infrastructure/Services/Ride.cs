@@ -10,4 +10,5 @@ public class Ride(IPublishEndpoint publishEndpoint) : IRide
     {
         await publishEndpoint.Publish(requestRide);
     }
+
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Messaging.Events
 {
-    public record AcceptRideRequestEvent(Guid DriverId, Guid RiderId);
+    public record AcceptRideRequestEvent(Guid DriverId, Guid RideId);
 }

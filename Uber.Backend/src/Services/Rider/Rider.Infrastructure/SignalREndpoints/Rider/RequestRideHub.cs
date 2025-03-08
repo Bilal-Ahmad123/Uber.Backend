@@ -16,6 +16,7 @@ namespace Rider.Infrastructure.SignalREndpoints.Rider
     {
         public async Task RequestRide(RequestRide requestRide)
         {
+            logger.LogInformation("RequestRide: {requestRide}", requestRide);
             await sender.Send(new RequestRideCommand(new RequestRideEvent {
                 RiderId = requestRide.RiderId,
                 PickUpLocation = new BuildingBlocks.Models.Rider.PickUpLocation(requestRide.PickupLongitude,requestRide.PickupLatitude),

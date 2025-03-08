@@ -9,4 +9,5 @@ namespace Rider.Application.Data.Services;
 public interface ISignalRService
 {
     void SendDriverLocationToRiders(DriverPositionWithRiders driverPositionWithRiders);
+    void NotifyRiderRideAccepted(Guid rideId);
 }
