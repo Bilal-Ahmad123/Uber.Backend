@@ -60,7 +60,5 @@ namespace RideMatching.Infrastructure.Services
 
             return request.RiderId;
         }
-
-
     }
 }

@@ -10,4 +10,5 @@ public interface ISignalRService
 {
     void SendDriverLocationToRiders(DriverPositionWithRiders driverPositionWithRiders);
     void NotifyRiderRideAccepted(Guid rideId);
+    void SendTripLocationToRiders(ContinuousTripLocation tripLocation);
 }

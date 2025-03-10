@@ -49,4 +49,20 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
             }
         }
     }
+
+    public async void SendTripLocationToRiders(ContinuousTripLocation tripLocation)
+    {
+        var connectionId = connectionManager.GetConnectionId(tripLocation.RiderId);
+        if (connectionId != null)
+        {
+            try
+            {
+                await hubContext.Clients.Client(connectionId).SendAsync("TripLocation", tripLocation.RideId);
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.ToString());
+            }
+        }
+    }
 }
