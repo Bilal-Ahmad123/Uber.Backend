@@ -73,13 +73,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trip.Infrastructure", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{A4D83C28-5BCA-4349-8D34-445CCF210861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.API", "src\Services\Notifications\Notifications.API\Notifications.API.csproj", "{27ED89CF-A37E-4DFC-91EE-7E936C589AB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.API", "src\Services\Notifications\Notifications.API\Notifications.API.csproj", "{27ED89CF-A37E-4DFC-91EE-7E936C589AB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Domain", "src\Services\Notifications\Notifications.Domain\Notifications.Domain.csproj", "{5FD88635-E898-4962-A3B8-84F554781A1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Domain", "src\Services\Notifications\Notifications.Domain\Notifications.Domain.csproj", "{5FD88635-E898-4962-A3B8-84F554781A1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Infrastructure", "src\Services\Notifications\Notifications.Infrastructure\Notifications.Infrastructure.csproj", "{BCCD9C0F-A117-4602-B786-2C9652A25D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Infrastructure", "src\Services\Notifications\Notifications.Infrastructure\Notifications.Infrastructure.csproj", "{BCCD9C0F-A117-4602-B786-2C9652A25D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notifications.Application", "src\Services\Notifications\Notifications.Application\Notifications.Application.csproj", "{F06962F6-2478-46FF-8CD9-03789ADED157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Application", "src\Services\Notifications\Notifications.Application\Notifications.Application.csproj", "{F06962F6-2478-46FF-8CD9-03789ADED157}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.API", "src\Services\Chat\Chat.API\Chat.API.csproj", "{238FA12B-4018-4FE8-8EE9-088406CDF8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Application", "src\Services\Chat\Chat.Application\Chat.Application.csproj", "{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Domain", "src\Services\Chat\Chat.Domain\Chat.Domain.csproj", "{75F4840A-53FA-4FFF-94F5-794F1E8F089B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Infrastructure", "src\Services\Chat\Chat.Infrastructure\Chat.Infrastructure.csproj", "{FDA7527F-CE5A-4335-B6F8-384E05001B45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -207,6 +217,22 @@ Global
 		{F06962F6-2478-46FF-8CD9-03789ADED157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F06962F6-2478-46FF-8CD9-03789ADED157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F06962F6-2478-46FF-8CD9-03789ADED157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238FA12B-4018-4FE8-8EE9-088406CDF8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238FA12B-4018-4FE8-8EE9-088406CDF8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238FA12B-4018-4FE8-8EE9-088406CDF8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238FA12B-4018-4FE8-8EE9-088406CDF8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F4840A-53FA-4FFF-94F5-794F1E8F089B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F4840A-53FA-4FFF-94F5-794F1E8F089B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F4840A-53FA-4FFF-94F5-794F1E8F089B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F4840A-53FA-4FFF-94F5-794F1E8F089B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -248,6 +274,11 @@ Global
 		{5FD88635-E898-4962-A3B8-84F554781A1A} = {A4D83C28-5BCA-4349-8D34-445CCF210861}
 		{BCCD9C0F-A117-4602-B786-2C9652A25D99} = {A4D83C28-5BCA-4349-8D34-445CCF210861}
 		{F06962F6-2478-46FF-8CD9-03789ADED157} = {A4D83C28-5BCA-4349-8D34-445CCF210861}
+		{7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0} = {7E4F0534-F858-4473-ACFF-825E18600196}
+		{238FA12B-4018-4FE8-8EE9-088406CDF8F5} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
+		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
+		{75F4840A-53FA-4FFF-94F5-794F1E8F089B} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
+		{FDA7527F-CE5A-4335-B6F8-384E05001B45} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}
