@@ -1,4 +1,8 @@
-﻿using Authentication.Application.Data;
+﻿using System.Reflection;
+using Authenitication.Infrastructure.Service;
+using Authentication.Application.Data;
+using Authentication.Application.Service;
+using BuildingBlocks.Messaging.MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +16,10 @@ public static class DependencyInjection
         {
             options.UseSqlServer(connectionString);
         });
+        services.AddScoped<IRiderService, RiderService>();
+        services.AddScoped<IDriverService, DriverService>();
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
         return services;
     }
 

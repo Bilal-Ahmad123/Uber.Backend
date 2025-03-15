@@ -3,30 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Authentication.Application.Service;
 using Authentication.Domain.ValueObjects;
 
 namespace Authentication.Application.Users.Commands.CreateUser.CreateDriver;
-public class CreateDriverCommandHandler(IApplicationDbContext dbContext) : ICommandHandler<CreateDriverCommand, CreateDriverResult>
+public class CreateDriverCommandHandler(IApplicationDbContext dbContext,IDriverService driverService) : ICommandHandler<CreateDriverCommand, CreateDriverResult>
 {
     public async Task<CreateDriverResult> Handle(CreateDriverCommand command, CancellationToken cancellationToken)
     {
         var driver = CreateDriver(command.Driver);
-        dbContext.Drivers.Add(driver);
+        dbContext.Users.Add(driver);
         await dbContext.SaveChangesAsync(cancellationToken);
+        driverService.SendCreateDriverEvent(command.Driver,driver.Id.Value);
         return new CreateDriverResult(driver.Id.Value);
     }
 
-    public Driver CreateDriver(DriverDto driver)
+    public User CreateDriver(DriverDto driver)
     {
-        return Driver.Create(
-          DriverId.of(Guid.NewGuid()),
-           driver.FirstName,
-           driver.LastName,
-           driver.Email,
-           driver.ContactNumber,
-           driver.Country
+        return User.Create(
+          UserId.Of(Guid.NewGuid()),
+           driver.Email
          );
     }
-
-
 }

@@ -5,7 +5,7 @@ public class CheckDriverExistsHandler(IApplicationDbContext dbContext) : IQueryH
 {
     public async Task<CheckDriverExistsResult> Handle(CheckDriverExistsQuery query, CancellationToken cancellationToken)
     {
-        var driver = await dbContext.Drivers.FirstOrDefaultAsync(x => x.Email.Equals(query.Email));
+        var driver = await dbContext.Users.FirstOrDefaultAsync(x => x.Email.Equals(query.Email));
         if (driver is not null)
         {
             return new CheckDriverExistsResult(driver.Id.Value);

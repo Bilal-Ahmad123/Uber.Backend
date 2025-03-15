@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.Messaging.Events
 {
-    public record SendContinuousRideLocationEvent(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId)
+    public record SendContinuousRideLocationEvent(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId);
 }

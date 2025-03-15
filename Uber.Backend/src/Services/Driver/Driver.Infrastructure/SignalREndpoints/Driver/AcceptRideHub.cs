@@ -13,7 +13,7 @@ namespace Driver.Infrastructure.SignalREndpoints.Driver
     {
         public async Task AcceptRide(Guid rideId, Guid driverId)
         {
-            await sender.Send(new AcceptRideCommand(new BuildingBlocks.Models.Ride.AcceptRideRequest(driverId, rideId));
+            await sender.Send(new AcceptRideCommand(new BuildingBlocks.Models.Ride.AcceptRideRequest(driverId, rideId)));
         }
     }
 }
