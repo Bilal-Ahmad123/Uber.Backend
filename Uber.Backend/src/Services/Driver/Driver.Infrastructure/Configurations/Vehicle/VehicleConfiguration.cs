@@ -1,8 +1,8 @@
 ﻿using Driver.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace Driver.Infrastructure.Configurations.Vehicle;
 using DriverVehicle = Driver.Domain.Models.Vehicle.Vehicle;
+namespace Driver.Infrastructure.Configurations.Vehicle;
 public class VehicleConfiguration : IEntityTypeConfiguration<DriverVehicle>
 {
     public void Configure(EntityTypeBuilder<DriverVehicle> builder)

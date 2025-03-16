@@ -9,6 +9,7 @@ using Driver.Infrastructure.Connection;
 using Driver.Infrastructure.BackgroundServices;
 using Microsoft.AspNetCore.Builder;
 using Driver.API.SignalREndpoints.Driver;
+using Driver.Infrastructure.Repository.Driver;
 namespace Driver.Infrastructure;
 public static class DependencyInjection
 {
@@ -22,6 +23,7 @@ public static class DependencyInjection
         services.AddSingleton<IConnectionManager, ConnectionManager>();
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         services.AddSingleton<ISignalRService, SignalRService>();
+        services.AddScoped<IDriverRepository, DriverRepository>();
         services.AddHostedService<DriverRedisBackgroundService>();
         return services;
     }

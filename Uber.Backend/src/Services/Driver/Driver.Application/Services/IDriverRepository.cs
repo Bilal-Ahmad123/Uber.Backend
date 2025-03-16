@@ -9,5 +9,5 @@ using Driver.Domain.Models.Driver;
 namespace Driver.Application.Services;
 public interface IDriverRepository
 {
-    public void CreateDriver(CreateDriverEvent driver,CancellationToken cancellationToken);
+    public Task CreateDriver(CreateDriverEvent driver,CancellationToken cancellationToken);
 }

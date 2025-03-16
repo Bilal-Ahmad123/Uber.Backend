@@ -15,6 +15,7 @@ public class RequestRideCommandHandler(ILogger<RequestRideCommandHandler> logger
     public async Task<Unit> Handle(RequestRideCommand request, CancellationToken cancellationToken)
     {
        await ride.RequestRide(request.RequestRide);
-        return Unit.Value;
+       logger.LogInformation("RiderLogged");
+       return Unit.Value;
     }
 }

@@ -12,10 +12,10 @@ using DriverModel = Driver.Domain.Models.Driver.Driver;
 namespace Driver.Infrastructure.Repository.Driver;
 public class DriverRepository(IApplicationDbContext dbContext) : IDriverRepository
 {
-    public async void CreateDriver(CreateDriverEvent driver, CancellationToken cancellationToken)
+    public async Task CreateDriver(CreateDriverEvent driver, CancellationToken cancellationToken)
     {
         dbContext.Drivers.Add(MapDriverEvent(driver));
-        await dbContext.SaveChangesAsync(cancellationToken);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
     }
 
     private DriverModel MapDriverEvent(CreateDriverEvent driver)

@@ -10,7 +10,7 @@ using RiderModel = Rider.Domain.Models.Rider.Rider;
 
 namespace Rider.Infrastructure
 {
-    class ApplicationDbContext : DbContext, IApplicationDbContext
+    public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         public ApplicationDbContext() { }
 
