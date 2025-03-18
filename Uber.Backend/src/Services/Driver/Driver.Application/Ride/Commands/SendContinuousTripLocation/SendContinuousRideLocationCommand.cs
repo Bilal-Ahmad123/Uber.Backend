@@ -7,5 +7,5 @@ using MediatR;
 
 namespace Driver.Application.Ride.Commands.SendContinuousTripLocation
 {
-    public record SendContinuousRideLocationCommand(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId):ICommand<Unit>;
+    public record SendContinuousRideLocationCommand(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId,string VehicleType):ICommand<Unit>;
 }

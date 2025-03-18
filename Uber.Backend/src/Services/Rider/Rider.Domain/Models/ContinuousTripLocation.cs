@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Rider.Domain.Models
 {
-   public record ContinuousTripLocation(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId);
+   public record ContinuousTripLocation(Guid RideId, Guid DriverId, double Longitude, double Latitude, Guid RiderId,string VehicleType);
 }
