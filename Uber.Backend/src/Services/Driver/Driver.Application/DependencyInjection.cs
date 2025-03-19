@@ -6,6 +6,7 @@ using Microsoft.FeatureManagement;
 using BuildingBlocks.Messaging.MassTransit;
 using Driver.Application.Data.Repository;
 using StackExchange.Redis;
+using Driver.Application.Repositories;
 
 namespace Driver.Application;
 public static class DependencyInjection
