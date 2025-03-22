@@ -1,2 +1,2 @@
-﻿global using Authentication.Domain.Abstractions;
-global using Authentication.Domain.Exceptions;
+﻿global using Driver.Domain.ValueObjects;
+global using BuildingBlocks.Exceptions;

@@ -83,13 +83,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notifications.Application",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.API", "src\Services\Chat\Chat.API\Chat.API.csproj", "{238FA12B-4018-4FE8-8EE9-088406CDF8F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.API", "src\Services\Chat\Chat.API\Chat.API.csproj", "{238FA12B-4018-4FE8-8EE9-088406CDF8F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Application", "src\Services\Chat\Chat.Application\Chat.Application.csproj", "{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Application", "src\Services\Chat\Chat.Application\Chat.Application.csproj", "{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Domain", "src\Services\Chat\Chat.Domain\Chat.Domain.csproj", "{75F4840A-53FA-4FFF-94F5-794F1E8F089B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Domain", "src\Services\Chat\Chat.Domain\Chat.Domain.csproj", "{75F4840A-53FA-4FFF-94F5-794F1E8F089B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Infrastructure", "src\Services\Chat\Chat.Infrastructure\Chat.Infrastructure.csproj", "{FDA7527F-CE5A-4335-B6F8-384E05001B45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Infrastructure", "src\Services\Chat\Chat.Infrastructure\Chat.Infrastructure.csproj", "{FDA7527F-CE5A-4335-B6F8-384E05001B45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vehicle", "Vehicle", "{9D581B90-1F0C-40F9-A803-CB767537F375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.API", "src\Services\Vehicle\Vehicle.API\Vehicle.API.csproj", "{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Application", "src\Services\Vehicle\Vehicle.Application\Vehicle.Application.csproj", "{1EF23864-BEAC-45A4-B82F-8A0347010559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Infrastructure", "src\Services\Vehicle\Vehicle.Infrastructure\Vehicle.Infrastructure.csproj", "{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Domain", "src\Services\Vehicle\Vehicle.Domain\Vehicle.Domain.csproj", "{6D25EC78-8967-4F45-BAA5-2C6803D387E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -233,6 +243,22 @@ Global
 		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDA7527F-CE5A-4335-B6F8-384E05001B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF23864-BEAC-45A4-B82F-8A0347010559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF23864-BEAC-45A4-B82F-8A0347010559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF23864-BEAC-45A4-B82F-8A0347010559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF23864-BEAC-45A4-B82F-8A0347010559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D25EC78-8967-4F45-BAA5-2C6803D387E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D25EC78-8967-4F45-BAA5-2C6803D387E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D25EC78-8967-4F45-BAA5-2C6803D387E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D25EC78-8967-4F45-BAA5-2C6803D387E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -279,6 +305,11 @@ Global
 		{0C15AAA4-68F3-4A04-AAED-EF1575EDAAC0} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
 		{75F4840A-53FA-4FFF-94F5-794F1E8F089B} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
 		{FDA7527F-CE5A-4335-B6F8-384E05001B45} = {7ABCE71B-D306-4A2F-BD89-C78E1E55FDC0}
+		{9D581B90-1F0C-40F9-A803-CB767537F375} = {7E4F0534-F858-4473-ACFF-825E18600196}
+		{B5DD849E-7A50-48A0-B6E5-4D441ADA281A} = {9D581B90-1F0C-40F9-A803-CB767537F375}
+		{1EF23864-BEAC-45A4-B82F-8A0347010559} = {9D581B90-1F0C-40F9-A803-CB767537F375}
+		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9} = {9D581B90-1F0C-40F9-A803-CB767537F375}
+		{6D25EC78-8967-4F45-BAA5-2C6803D387E1} = {9D581B90-1F0C-40F9-A803-CB767537F375}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}

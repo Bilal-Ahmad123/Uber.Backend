@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Driver.Domain\Driver.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\Location\" />
-  </ItemGroup>
-
 </Project>

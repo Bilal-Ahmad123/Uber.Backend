@@ -1,3 +1,2 @@
-﻿global using Driver.Application.Dtos.Vehicle;
-global using BuildingBlocks.CQRS;
+﻿global using BuildingBlocks.CQRS;
 

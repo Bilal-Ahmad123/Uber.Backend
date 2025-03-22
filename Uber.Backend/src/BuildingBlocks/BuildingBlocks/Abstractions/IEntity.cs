@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Authentication.Domain.Abstractions;
+namespace BuildingBlocks.Abstractions;
 public interface IEntity<T>:IEntity
 {
     public T Id { get; set; }
