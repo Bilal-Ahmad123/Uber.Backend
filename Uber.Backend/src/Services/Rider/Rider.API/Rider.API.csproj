@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Rider.Infrastructure\Rider.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Endpoints\" />
-  </ItemGroup>
-
 </Project>
