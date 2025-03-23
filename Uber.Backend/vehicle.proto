@@ -1,0 +1,20 @@
+syntax = "proto3";
+option csharp_namespace = "VehicleService";
+
+service Vehicle{
+    rpc GetVehicleDetails (VehicleRequest) returns (VehicleResponse);
+}
+
+message VehicleRequest{
+    repeated string driverId = 1;
+}
+
+message VehicleResponse{
+    string vehicleId = 1;
+    string vehicleType = 2;
+    double fare = 3;
+}
+
+message VehicleResponseList {
+    repeated VehicleResponse vehicleResponse = 1;
+}

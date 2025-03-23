@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Microsoft.Extensions.Hosting;
 using Redis.Application.Data.RiderRepository;
+using Redis.Application.Repositories;
 using StackExchange.Redis;
 
 namespace Redis.Application.BackgroundServices;
@@ -14,12 +15,12 @@ internal class RiderRedisBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    private readonly IRiderRedisRepository _riderRedisRepository;
-    public RiderRedisBackgroundService(IConnectionMultiplexer connection,IRiderRedisRepository riderRedisRepository)
+    private readonly IRedisRepository _redisRepository;
+    public RiderRedisBackgroundService(IConnectionMultiplexer connection,IRedisRepository redisRepository)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
-        _riderRedisRepository = riderRedisRepository;
+        _redisRepository = redisRepository;
     }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -32,7 +33,7 @@ internal class RiderRedisBackgroundService : BackgroundService
                 if (!string.IsNullOrEmpty(messageContent))
                 {
                     riderUpdate = JsonSerializer.Deserialize<UpdateUserLocation>(messageContent);
-                    await _riderRedisRepository.UpdateRiderLocation(riderUpdate!);
+                    await _redisRepository.UpdateRiderLocation(riderUpdate!);
                 }
             }
         });

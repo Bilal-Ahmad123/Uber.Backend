@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BuildingBlocks.Common;
 using BuildingBlocks.Events;
 using BuildingBlocks.Models.Driver;
 using Microsoft.Extensions.Hosting;
 using Redis.Application.Data.DriverRepository;
+using Redis.Application.Repositories;
 using StackExchange.Redis;
 
 namespace Redis.Application.BackgroundServices;
@@ -15,47 +17,30 @@ public class DriverRedisBackgroundService : BackgroundService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
-    private readonly IDriverRepository _driverRepository;
-    public DriverRedisBackgroundService(IConnectionMultiplexer connection,IDriverRepository driverRepository)
+    private readonly IRedisRepository _redisRepository;
+    public DriverRedisBackgroundService(IConnectionMultiplexer connection,IRedisRepository redisRepository)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();
-        _driverRepository = driverRepository;
+        _redisRepository = redisRepository;
     }
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         await _pubsub.SubscribeAsync(RedisChannel.Literal("driver_location_updates"), async (channel, message) =>
         {
-            if(message.HasValue)
+            if (message.HasValue)
             {
                 string messageContent = message.ToString();
                 UpdateDriverLocation? driverUpdate = null;
                 if (!string.IsNullOrEmpty(messageContent))
                 {
-                     driverUpdate = JsonSerializer.Deserialize<UpdateDriverLocation>(messageContent);
-                    await _driverRepository.UpdateDriverLocation(driverUpdate!);
-                }
-                var riderRadius = 5;
-                var nearbyRiders =  _redis.GeoRadius(
-                                "riders:locations",
-                                 driverUpdate!.Longitude, 
-                                 driverUpdate.Latitude,   
-                                 riderRadius,             
-                                GeoUnit.Kilometers      
-                           );
-                if (nearbyRiders.Length > 0)
-                {
-                    var riderMessage = JsonSerializer.Serialize(
-                        new
-                        {
-                            UserId = driverUpdate?.UserId,
-                            Latitude = driverUpdate?.Latitude,
-                            Longitude = driverUpdate?.Longitude,
-                            VehicleType = driverUpdate?.VehicleType,
-                            Riders = nearbyRiders.Select(r => r.Member.ToString()).ToList()
-                        }
-                        );
-                    await _pubsub.PublishAsync(RedisChannel.Literal("nearby_driver_updates"), riderMessage);
+                    driverUpdate = Helper.Deserializer<UpdateDriverLocation>(messageContent);
+                    await _redisRepository.UpdateDriverLocation(driverUpdate!);
+                    if(driverUpdate != null)
+                    {
+                        var riderMessage = _redisRepository.GetNearbyRiders(driverUpdate);
+                        await _pubsub.PublishAsync(RedisChannel.Literal("nearby_driver_updates"), riderMessage);
+                    }
                 }
             }
 

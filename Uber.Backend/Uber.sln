@@ -93,13 +93,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat.Infrastructure", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vehicle", "Vehicle", "{9D581B90-1F0C-40F9-A803-CB767537F375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.API", "src\Services\Vehicle\Vehicle.API\Vehicle.API.csproj", "{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.API", "src\Services\Vehicle\Vehicle.API\Vehicle.API.csproj", "{B5DD849E-7A50-48A0-B6E5-4D441ADA281A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Application", "src\Services\Vehicle\Vehicle.Application\Vehicle.Application.csproj", "{1EF23864-BEAC-45A4-B82F-8A0347010559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.Application", "src\Services\Vehicle\Vehicle.Application\Vehicle.Application.csproj", "{1EF23864-BEAC-45A4-B82F-8A0347010559}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Infrastructure", "src\Services\Vehicle\Vehicle.Infrastructure\Vehicle.Infrastructure.csproj", "{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.Infrastructure", "src\Services\Vehicle\Vehicle.Infrastructure\Vehicle.Infrastructure.csproj", "{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vehicle.Domain", "src\Services\Vehicle\Vehicle.Domain\Vehicle.Domain.csproj", "{6D25EC78-8967-4F45-BAA5-2C6803D387E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vehicle.Domain", "src\Services\Vehicle\Vehicle.Domain\Vehicle.Domain.csproj", "{6D25EC78-8967-4F45-BAA5-2C6803D387E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GrpcContracts", "GrpcContracts", "{8B3B34AB-41A4-411E-B49C-61273B7A8E7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{293DDAA0-2CB9-4435-B2BA-63D99E744D8F}"
+	ProjectSection(SolutionItems) = preProject
+		redis.proto = redis.proto
+		vehicle.proto = vehicle.proto
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -310,6 +318,8 @@ Global
 		{1EF23864-BEAC-45A4-B82F-8A0347010559} = {9D581B90-1F0C-40F9-A803-CB767537F375}
 		{7499793C-EF44-4859-A3FB-A1DCFC4C8FF9} = {9D581B90-1F0C-40F9-A803-CB767537F375}
 		{6D25EC78-8967-4F45-BAA5-2C6803D387E1} = {9D581B90-1F0C-40F9-A803-CB767537F375}
+		{8B3B34AB-41A4-411E-B49C-61273B7A8E7D} = {7E4F0534-F858-4473-ACFF-825E18600196}
+		{293DDAA0-2CB9-4435-B2BA-63D99E744D8F} = {8B3B34AB-41A4-411E-B49C-61273B7A8E7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CB609D9-5D54-4C11-A371-DAAC8B74E430}

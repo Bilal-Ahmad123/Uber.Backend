@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package redis;
+
+service RedisService {
+  rpc GetNearbyDrivers (NearbyDriversRequest) returns (NearbyDriversResponse);
+}
+
+message NearbyDriversRequest {
+  string pickupLocation = 1;
+}
+
+message NearbyDriversResponse {
+  repeated string driverIds = 1;
+}

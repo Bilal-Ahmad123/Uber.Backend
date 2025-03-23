@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using BuildingBlocks.Common;
+using BuildingBlocks.Events;
+using BuildingBlocks.Models.Driver;
+using BuildingBlocks.Models.Rider;
+using Redis.Application.Repositories;
+using StackExchange.Redis;
+
+namespace Redis.Infrastructure.Repositories;
+public class RedisRepository : IRedisRepository
+{
+    private readonly IDatabase _redis;
+    public RedisRepository(IConnectionMultiplexer connection)
+    {
+        _redis = connection.GetDatabase();
+    }
+    public string GetNearbyDrivers(RideRequest rideRequest, int radius = 5)
+    {
+
+            var nearbyDrivers = _redis.GeoRadius(
+                               "drivers:locations",
+                                rideRequest!.PickUpLocation.Longitude,
+                                rideRequest.PickUpLocation.Latitude,
+                                radius,
+                               GeoUnit.Kilometers
+            );
+
+            if(nearbyDrivers.Length > 0)
+            {
+                var drivers = JsonSerializer.Serialize(
+                    new
+                    {
+                        RiderId = rideRequest.RiderId,
+                        PickUpLocation = rideRequest.PickUpLocation,
+                        DropOffLocation = rideRequest.DropOffLocation,
+                        Drivers = nearbyDrivers.Select(r => r.Member.ToString()).ToList()
+                    }
+                );
+                return drivers;
+
+            }
+        return string.Empty;
+    }
+
+    public string GetNearbyRiders(UpdateDriverLocation driverLocation, int radius = 5)
+    {
+
+            var nearbyRiders = _redis.GeoRadius(
+                               "riders:locations",
+                                driverLocation!.Longitude,
+                                driverLocation.Latitude,
+                                radius,
+                               GeoUnit.Kilometers
+            );
+
+            if (nearbyRiders.Length > 0)
+            {
+                var riders = JsonSerializer.Serialize(
+                    new
+                    {
+                        UserId = driverLocation?.UserId,
+                        Latitude = driverLocation?.Latitude,
+                        Longitude = driverLocation?.Longitude,
+                        VehicleType = driverLocation?.VehicleType,
+                        Riders = nearbyRiders.Select(r => r.Member.ToString()).ToList()
+                    }
+                );
+                return riders;
+
+            }
+        return string.Empty;
+    }
+
+    public Task DeleteDriverLocation(Guid driverId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task GetDriverLocation(Guid driverId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task UpdateDriverLocation(UpdateDriverLocation driverLocation)
+    {
+        await _redis.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.UserId.ToString());
+    }
+
+    public Task DeleteRiderLocation(Guid riderId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task GetRiderLocation(Guid driverId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task UpdateRiderLocation(UpdateUserLocation riderLocation)
+    {
+        await _redis.GeoAddAsync("riders:locations", riderLocation.Longitude, riderLocation.Latitude, riderLocation.UserId.ToString());
+    }
+
+}

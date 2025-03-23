@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using BuildingBlocks.Common;
 using BuildingBlocks.Models.Rider;
 using Microsoft.Extensions.Hosting;
+using Redis.Application.Repositories;
 using StackExchange.Redis;
 
 namespace Redis.Application.BackgroundServices
@@ -14,10 +16,12 @@ namespace Redis.Application.BackgroundServices
     {
         private readonly IDatabase _redis;
         private readonly ISubscriber _pubsub;
-        public RideRequestBackgroundService(IConnectionMultiplexer connection)
+        private readonly IRedisRepository _redisRepository;
+        public RideRequestBackgroundService(IConnectionMultiplexer connection, IRedisRepository redisRepository)
         {
             _redis = connection.GetDatabase();
             _pubsub = connection.GetSubscriber();
+            _redisRepository = redisRepository;
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -29,30 +33,14 @@ namespace Redis.Application.BackgroundServices
                     RideRequest? rideRequest = null;
                     if (!string.IsNullOrEmpty(messageContent))
                     {
-                        rideRequest = JsonSerializer.Deserialize<RideRequest>(messageContent);
+                        rideRequest = Helper.Deserializer<RideRequest>(messageContent);
+                        var driverMessage = _redisRepository.GetNearbyDrivers(rideRequest);
+                        if(driverMessage != null)
+                        {
+                            await _pubsub.PublishAsync(RedisChannel.Literal("driver_ride_request_recieved"), driverMessage);
+                        }
                     }
-                    var riderRadius = 5;
-                    var nearbyDrivers = _redis.GeoRadius(
-                                "drivers:locations",
-                                 rideRequest!.PickUpLocation.Longitude,
-                                 rideRequest.PickUpLocation.Latitude,
-                                 riderRadius,
-                                GeoUnit.Kilometers
-                          );
-                    if(nearbyDrivers.Length > 0)
-                    {
-                        var driverMessage = JsonSerializer.Serialize(
-                            new
-                            {
-                                RiderId = rideRequest.RiderId,
-                                PickUpLocation = rideRequest.PickUpLocation,
-                                DropOffLocation = rideRequest.DropOffLocation,
-                                Drivers = nearbyDrivers.Select(r => r.Member.ToString()).ToList()
-                            }
-                            );
-                        await _pubsub.PublishAsync(RedisChannel.Literal("driver_ride_request_recieved"), driverMessage);
-                    }
-
+                   
                 }
             });
         }
