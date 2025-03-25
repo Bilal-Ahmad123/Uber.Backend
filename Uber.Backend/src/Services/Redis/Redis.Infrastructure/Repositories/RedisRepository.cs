@@ -19,13 +19,13 @@ public class RedisRepository : IRedisRepository
     {
         _redis = connection.GetDatabase();
     }
-    public string GetNearbyDrivers(RideRequest rideRequest, int radius = 5)
+    public string GetNearbyDrivers(UpdateUserLocation rideRequest, int radius = 5)
     {
 
             var nearbyDrivers = _redis.GeoRadius(
                                "drivers:locations",
-                                rideRequest!.PickUpLocation.Longitude,
-                                rideRequest.PickUpLocation.Latitude,
+                                rideRequest!.Longitude,
+                                rideRequest.Latitude,
                                 radius,
                                GeoUnit.Kilometers
             );
@@ -35,9 +35,9 @@ public class RedisRepository : IRedisRepository
                 var drivers = JsonSerializer.Serialize(
                     new
                     {
-                        RiderId = rideRequest.RiderId,
-                        PickUpLocation = rideRequest.PickUpLocation,
-                        DropOffLocation = rideRequest.DropOffLocation,
+                        UserId = rideRequest.UserId,
+                        Latitude = rideRequest.Latitude,
+                        Longitude = rideRequest.Longitude,
                         Drivers = nearbyDrivers.Select(r => r.Member.ToString()).ToList()
                     }
                 );
@@ -86,7 +86,7 @@ public class RedisRepository : IRedisRepository
         throw new NotImplementedException();
     }
 
-    public async Task UpdateDriverLocation(UpdateDriverLocation driverLocation)
+    public async Task UpdateDriverLocation(UpdateUserLocation driverLocation)
     {
         await _redis.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.UserId.ToString());
     }

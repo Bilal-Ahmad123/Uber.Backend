@@ -1,8 +1,9 @@
 syntax = "proto3";
-option csharp_namespace = "VehicleService";
 
-service Vehicle{
-    rpc GetVehicleDetails (VehicleRequest) returns (VehicleResponse);
+package vehicle;
+
+service VehicleService{
+    rpc GetVehicleDetails (VehicleRequest) returns (VehicleResponseList);
 }
 
 message VehicleRequest{
@@ -13,6 +14,8 @@ message VehicleResponse{
     string vehicleId = 1;
     string vehicleType = 2;
     double fare = 3;
+    int32 maxSeats = 4;
+    string imageUrl = 5;
 }
 
 message VehicleResponseList {

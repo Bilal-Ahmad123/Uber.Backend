@@ -7,12 +7,12 @@ using BuildingBlocks.Events;
 using BuildingBlocks.Models.Driver;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using Redis.Application.Data.DriverRepository;
+using Redis.Application.Repositories;
 
 namespace Redis.Application.Consumers;
-public class UpdateDriverLocationConsumer(ILogger<UpdateDriverLocationConsumer> logger,IDriverRepository driverRepository) : IConsumer<UpdateDriverLocation>
+public class UpdateDriverLocationConsumer(ILogger<UpdateDriverLocationConsumer> logger,IRedisRepository driverRepository) : IConsumer<UpdateUserLocation>
 {
-    public async Task Consume(ConsumeContext<UpdateDriverLocation> context)
+    public async Task Consume(ConsumeContext<UpdateUserLocation> context)
     {
         logger.LogInformation("Driver Location Event Recieved");
 

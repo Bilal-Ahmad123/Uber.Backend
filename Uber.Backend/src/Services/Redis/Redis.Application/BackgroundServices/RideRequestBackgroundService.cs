@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Common;
+using BuildingBlocks.Events;
 using BuildingBlocks.Models.Rider;
 using Microsoft.Extensions.Hosting;
 using Redis.Application.Repositories;
@@ -30,17 +31,16 @@ namespace Redis.Application.BackgroundServices
                 if (message.HasValue)
                 {
                     string messageContent = message.ToString();
-                    RideRequest? rideRequest = null;
+                    UpdateUserLocation? rideRequest = null;
                     if (!string.IsNullOrEmpty(messageContent))
                     {
-                        rideRequest = Helper.Deserializer<RideRequest>(messageContent);
+                        rideRequest = Helper.Deserializer<UpdateUserLocation>(messageContent);
                         var driverMessage = _redisRepository.GetNearbyDrivers(rideRequest);
                         if(driverMessage != null)
                         {
                             await _pubsub.PublishAsync(RedisChannel.Literal("driver_ride_request_recieved"), driverMessage);
                         }
-                    }
-                   
+                    }                  
                 }
             });
         }

@@ -6,7 +6,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Microsoft.Extensions.Hosting;
-using Redis.Application.Data.RiderRepository;
 using Redis.Application.Repositories;
 using StackExchange.Redis;
 

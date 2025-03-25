@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Redis.Application\Redis.Application.csproj" />
+    <ProjectReference Include="..\Redis.Domain\Redis.Domain.csproj" />
   </ItemGroup>
 
 </Project>

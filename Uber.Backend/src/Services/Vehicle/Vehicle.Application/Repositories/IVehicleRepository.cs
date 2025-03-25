@@ -7,4 +7,5 @@ public interface IVehicleRepository
 {
     Task<VehicleModel> GetVehicleDetails(Guid driverId);
     Task RegisterNewVehicle(AllVehicleModel vehicleModel,CancellationToken cancellationToken);
+    Task<List<AllVehicleDto>> GetNearbyVehicleDetails(IList<Guid> driverIds);
 }

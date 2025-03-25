@@ -11,9 +11,9 @@ using StackExchange.Redis;
 namespace Redis.Application.Repositories;
 public interface IRedisRepository
 {
-    string GetNearbyDrivers(RideRequest message, int radius = 5);
+    string GetNearbyDrivers(UpdateUserLocation message, int radius = 5);
     string GetNearbyRiders(UpdateDriverLocation message, int radius = 5);
-    public Task UpdateDriverLocation(UpdateDriverLocation driverLocation);
+    public Task UpdateDriverLocation(UpdateUserLocation driverLocation);
     public Task GetDriverLocation(Guid driverId);
     public Task DeleteDriverLocation(Guid driverId);
     public Task UpdateRiderLocation(UpdateUserLocation riderLocation);

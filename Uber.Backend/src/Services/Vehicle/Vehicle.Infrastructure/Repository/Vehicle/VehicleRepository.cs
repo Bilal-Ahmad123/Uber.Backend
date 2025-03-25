@@ -1,6 +1,7 @@
 ﻿using Vehicle.Application.Data;
 using Vehicle.Application.Repositories;
 using Vehicle.Application.Vehicle.Commands.RegisterNewVehicle;
+using Vehicle.Domain.Dtos.Vehicle;
 using Vehicle.Domain.Models.Vehicle;
 using DriverVehicle = Vehicle.Domain.Models.Vehicle.Vehicle;
 namespace Vehicle.Infrastructure.Repository.Vehicle;
@@ -22,4 +23,21 @@ public class VehicleRepository(IApplicationDbContext dbContext) : IVehicleReposi
         dbContext.AllVehicles.Add(vehicle);
         await dbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public Task<List<AllVehicleDto>> GetNearbyVehicleDetails(IList<Guid> driverIds)
+    {
+        var vehicles = dbContext.Vehicles.Where(v => driverIds.Contains(v.Id))
+            .Include(v => v.AllVehicleModel)
+            .Select(v => new AllVehicleDto
+            (
+                v.AllVehicleModel.VehicleName,
+                v.AllVehicleModel.MaxSeats,
+                v.AllVehicleModel.BaseFare,
+                v.AllVehicleModel.RatePerKM,
+                v.AllVehicleModel.ImageUrl
+            )).ToListAsync();
+
+        return vehicles;
+    }
+
 }

@@ -7,7 +7,9 @@ service RedisService {
 }
 
 message NearbyDriversRequest {
-  string pickupLocation = 1;
+  double latitude = 1;
+  double longitude = 2;
+  string userId = 3;
 }
 
 message NearbyDriversResponse {

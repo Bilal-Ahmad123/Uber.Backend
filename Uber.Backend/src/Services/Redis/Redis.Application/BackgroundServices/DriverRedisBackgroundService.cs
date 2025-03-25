@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using BuildingBlocks.Common;
 using BuildingBlocks.Events;
 using BuildingBlocks.Models.Driver;
+using Mapster;
 using Microsoft.Extensions.Hosting;
-using Redis.Application.Data.DriverRepository;
 using Redis.Application.Repositories;
 using StackExchange.Redis;
 
@@ -35,7 +35,7 @@ public class DriverRedisBackgroundService : BackgroundService
                 if (!string.IsNullOrEmpty(messageContent))
                 {
                     driverUpdate = Helper.Deserializer<UpdateDriverLocation>(messageContent);
-                    await _redisRepository.UpdateDriverLocation(driverUpdate!);
+                    await _redisRepository.UpdateDriverLocation(driverUpdate.Adapt<UpdateUserLocation>());
                     if(driverUpdate != null)
                     {
                         var riderMessage = _redisRepository.GetNearbyRiders(driverUpdate);

@@ -15,7 +15,6 @@ public class UpdateDriverLocationHandler(ILogger<UpdateDriverLocationCommand> lo
            request.LocationDto.Latitude,
            request.LocationDto.Longitude,
            request.LocationDto.VehicleType
-
         );
         logger.LogInformation("Driver Location Recieved");
         repository.SendDriverLocationUpdate(eventMessage);
