@@ -1,11 +1,13 @@
-﻿using Vehicle.Application.Data;
+﻿using System.Threading;
+using Vehicle.Application.Data;
 using Vehicle.Application.Repositories;
+using Vehicle.Application.Services;
 using Vehicle.Application.Vehicle.Commands.RegisterNewVehicle;
 using Vehicle.Domain.Dtos.Vehicle;
 using Vehicle.Domain.Models.Vehicle;
 using DriverVehicle = Vehicle.Domain.Models.Vehicle.Vehicle;
 namespace Vehicle.Infrastructure.Repository.Vehicle;
-public class VehicleRepository(IApplicationDbContext dbContext) : IVehicleRepository
+public class VehicleRepository(IApplicationDbContext dbContext,IAllVehiclesRepository allVehiclesRepository) : IVehicleRepository
 {
     public async Task<DriverVehicle> GetVehicleDetails(Guid driverId)
     {
@@ -18,15 +20,9 @@ public class VehicleRepository(IApplicationDbContext dbContext) : IVehicleReposi
         return vehicle;
     }
 
-    public async Task RegisterNewVehicle(AllVehicleModel vehicle,CancellationToken cancellationToken)
-    {
-        dbContext.AllVehicles.Add(vehicle);
-        await dbContext.SaveChangesAsync(cancellationToken);
-    }
-
     public Task<List<AllVehicleDto>> GetNearbyVehicleDetails(IList<Guid> driverIds)
     {
-        var vehicles = dbContext.Vehicles.Where(v => driverIds.Contains(v.Id))
+        return dbContext.Vehicles.Where(v => driverIds.Contains(v.Id))
             .Include(v => v.AllVehicleModel)
             .Select(v => new AllVehicleDto
             (
@@ -37,7 +33,13 @@ public class VehicleRepository(IApplicationDbContext dbContext) : IVehicleReposi
                 v.AllVehicleModel.ImageUrl
             )).ToListAsync();
 
-        return vehicles;
     }
 
+    public async Task  CreateDriverVehicle(DriverVehicle vehicle,CancellationToken cancellationToken)
+    {
+        var vehicleId = await allVehiclesRepository.GetVehicleId(vehicle.VehicleType);
+        vehicle.AllVehicleModelId = vehicleId!;
+        dbContext.Vehicles.Add(vehicle);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
 }

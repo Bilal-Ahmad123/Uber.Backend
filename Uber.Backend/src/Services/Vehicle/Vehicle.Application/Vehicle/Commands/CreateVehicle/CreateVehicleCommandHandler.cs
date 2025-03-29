@@ -1,14 +1,14 @@
 ﻿using Vehicle.Application.Data;
+using Vehicle.Application.Repositories;
 using DriverVehicle = Vehicle.Domain.Models.Vehicle.Vehicle;
 namespace Vehicle.Application.Vehicle.Commands.CreateVehicle;
-public class CreateVehicleCommandHandler(IApplicationDbContext dbContext) : ICommandHandler<CreateVehicleCommand, CreateVehicleResult>
+public class CreateVehicleCommandHandler(IVehicleRepository vehicleRepository) : ICommandHandler<CreateVehicleCommand, CreateVehicleResult>
 {
-    public async Task<CreateVehicleResult> Handle(CreateVehicleCommand request, CancellationToken cancellationToken)
+    public Task<CreateVehicleResult> Handle(CreateVehicleCommand request, CancellationToken cancellationToken)
     {
         var vehicle = CreateVehicle(request.Vehicle);
-        dbContext.Vehicles.Add(vehicle);
-        await dbContext.SaveChangesAsync(cancellationToken);
-        return new CreateVehicleResult(vehicle.AllVehicleModel.Id.Value);
+        vehicleRepository.CreateDriverVehicle(vehicle,cancellationToken);
+        return Task.FromResult(new CreateVehicleResult(vehicle.Id));
     }
 
     public DriverVehicle CreateVehicle(VehicleDto vehicle)

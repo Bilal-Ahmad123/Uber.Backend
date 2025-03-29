@@ -22,5 +22,4 @@ public class CheckDriverExists:ICarterModule
         .WithSummary("Check if Driver Exists")
         .WithDescription("Check if Driver Exists");
     }
-
 }

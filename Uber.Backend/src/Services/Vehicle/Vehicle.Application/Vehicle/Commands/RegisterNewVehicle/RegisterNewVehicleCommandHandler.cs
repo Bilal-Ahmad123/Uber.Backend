@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vehicle.Application.Repositories;
+﻿using Vehicle.Application.Repositories;
+using Vehicle.Application.Services;
 using Vehicle.Domain.Models.Vehicle;
 using Vehicle.Domain.ValueObjects;
 
 namespace Vehicle.Application.Vehicle.Commands.RegisterNewVehicle;
-public class RegisterNewVehicleCommandHandler(IVehicleRepository repository) : ICommandHandler<RegisterNewVehicleCommand, RegisterNewVehicleCommandResult>
+public class RegisterNewVehicleCommandHandler(IAllVehiclesRepository repository,IFileService fileService) : ICommandHandler<RegisterNewVehicleCommand, RegisterNewVehicleCommandResult>
 {
     public async Task<RegisterNewVehicleCommandResult> Handle(RegisterNewVehicleCommand request, CancellationToken cancellationToken)
     {
-        var vehicle = MapToAllVehicleModel(request);
+        var filePath = await fileService.SaveFileAsync(request.ImageUrl);
+        var vehicle = MapToAllVehicleModel(request, filePath);
         await repository.RegisterNewVehicle(vehicle,cancellationToken);
         return new RegisterNewVehicleCommandResult(vehicle.Id.Value);
     }
 
-    private AllVehicleModel MapToAllVehicleModel(RegisterNewVehicleCommand command)
+    private AllVehicleModel MapToAllVehicleModel(RegisterNewVehicleCommand command, string filePath)
     {
         return new AllVehicleModel
         {
@@ -26,7 +23,7 @@ public class RegisterNewVehicleCommandHandler(IVehicleRepository repository) : I
             BaseFare = command.BaseFare,
             RatePerKM = command.RatePerKM,
             MaxSeats = command.MaxSeats,
-            ImageUrl = command.ImageUrl
+            ImageUrl = filePath
         };
     }
 }

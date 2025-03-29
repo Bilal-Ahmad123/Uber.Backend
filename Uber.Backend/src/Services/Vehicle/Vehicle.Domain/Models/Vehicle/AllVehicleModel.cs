@@ -1,6 +1,7 @@
 ﻿
 
 using BuildingBlocks.Abstractions;
+using Microsoft.AspNetCore.Http;
 using Vehicle.Domain.ValueObjects;
 
 namespace Vehicle.Domain.Models.Vehicle

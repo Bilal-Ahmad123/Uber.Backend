@@ -5,15 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Vehicle.Application.Vehicle.Commands.RegisterNewVehicle;
-public record RegisterNewVehicleCommand(
+namespace Vehicle.Domain.Dtos.Vehicle;
+public record RegisterNewVehicleDto(
     string VehicleName,
     int MaxSeats,
     decimal BaseFare,
     decimal RatePerKM,
-    IFormFile ImageUrl
-):ICommand<RegisterNewVehicleCommandResult>;
-
-public record RegisterNewVehicleCommandResult(
-    Guid VehicleId
+    IFormFile Image
 );

@@ -11,7 +11,7 @@ public class VehicleProtoService : IVehicleProtoClientService
     {
         _vehicleServiceClient = vehicleServiceClient;
     }
-    public Task<List<NearbyVehicleDetails>> NearbyVehicleDetails(IList<Guid> driverIds)
+    public List<NearbyVehicleDetails> NearbyVehicleDetails(IList<Guid> driverIds)
     {
         var result = _vehicleServiceClient.GetVehicleDetails(new VehicleRequest
         {
@@ -25,6 +25,6 @@ public class VehicleProtoService : IVehicleProtoClientService
             (decimal)v.Fare
         )).ToList();
 
-        return Task.FromResult(vehicles);
+        return vehicles;
     }
 }

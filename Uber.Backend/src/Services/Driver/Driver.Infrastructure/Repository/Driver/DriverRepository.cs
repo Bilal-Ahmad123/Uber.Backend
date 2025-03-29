@@ -15,7 +15,7 @@ public class DriverRepository(IApplicationDbContext dbContext) : IDriverReposito
     public async Task CreateDriver(CreateDriverEvent driver, CancellationToken cancellationToken)
     {
         dbContext.Drivers.Add(MapDriverEvent(driver));
-        await dbContext.SaveChangesAsync(CancellationToken.None);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
     private DriverModel MapDriverEvent(CreateDriverEvent driver)
