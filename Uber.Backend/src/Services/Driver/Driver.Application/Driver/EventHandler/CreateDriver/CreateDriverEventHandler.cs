@@ -10,9 +10,8 @@ using DriverEvent = Driver.Domain.Models.Driver.CreateDriver;
 namespace Driver.Application.Driver.EventHandler.CreateDriver;
 public class CreateDriverEventHandler(IDriverRepository driverRepository) : IConsumer<CreateDriverEvent>
 {
-    public Task Consume(ConsumeContext<CreateDriverEvent> context)
+    public async Task Consume(ConsumeContext<CreateDriverEvent> context)
     {
-        driverRepository.CreateDriver(context.Message,context.CancellationToken);
-        return Task.CompletedTask;
+        await driverRepository.CreateDriver(context.Message,context.CancellationToken);
     }
 }
