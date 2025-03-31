@@ -22,7 +22,7 @@ public class VehicleRepository(IApplicationDbContext dbContext,IAllVehiclesRepos
 
     public Task<List<AllVehicleDto>> GetNearbyVehicleDetails(IList<Guid> driverIds)
     {
-        return dbContext.Vehicles.Where(v => driverIds.Contains(v.Id))
+        return dbContext.Vehicles.Where(v => driverIds.Contains(v.DriverId))
             .Include(v => v.AllVehicleModel)
             .Select(v => new AllVehicleDto
             (

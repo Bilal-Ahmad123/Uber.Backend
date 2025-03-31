@@ -88,7 +88,7 @@ public class RedisRepository : IRedisRepository
 
     public async Task UpdateDriverLocation(UpdateUserLocation driverLocation)
     {
-        await _redis.GeoAddAsync("drivers:locations", driverLocation.Latitude, driverLocation.Longitude, driverLocation.UserId.ToString());
+        await _redis.GeoAddAsync("drivers:locations", driverLocation.Longitude, driverLocation.Latitude, driverLocation.UserId.ToString());
     }
 
     public Task DeleteRiderLocation(Guid riderId)

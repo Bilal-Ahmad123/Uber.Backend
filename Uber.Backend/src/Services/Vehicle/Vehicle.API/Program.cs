@@ -39,7 +39,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseAntiforgery();
-app.MapGrpcService<MyVehicleService>().EnableGrpcWeb();
+app.MapGrpcService<MyVehicleService>();
 app.UseGrpcWeb();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -48,5 +48,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseApiServices();
+app.UseStaticFiles();
 
 app.Run();
