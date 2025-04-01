@@ -26,7 +26,7 @@ public class VehicleRepository(IApplicationDbContext dbContext,IAllVehiclesRepos
             .Include(v => v.AllVehicleModel)
             .Select(v => new AllVehicleDto
             (
-                v.AllVehicleModel.VehicleName,
+                v.AllVehicleModel.VehicleName, 
                 v.AllVehicleModel.MaxSeats,
                 v.AllVehicleModel.BaseFare,
                 v.AllVehicleModel.RatePerKM,

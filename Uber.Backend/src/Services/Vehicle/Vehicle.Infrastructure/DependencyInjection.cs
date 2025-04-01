@@ -22,6 +22,7 @@ public static class DependencyInjection
         services.AddScoped<IVehicleRepository, VehicleRepository>();
         services.AddSingleton<IFileService, FileService>();
         services.AddScoped<IAllVehiclesRepository, AllVehiclesRepository>();
+        services.AddHttpContextAccessor();
         return services;
     }
 }

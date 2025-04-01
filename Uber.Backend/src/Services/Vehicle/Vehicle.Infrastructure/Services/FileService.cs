@@ -11,18 +11,20 @@ public class FileService : IFileService
 {
     public async Task<string> SaveFileAsync(IFormFile imageFile)
     {
-        string? imagePath = null;
+        if (imageFile == null) throw new ArgumentNullException(nameof(imageFile));
 
-        if (imageFile != null)
+        var uploadsFolder = Path.Combine("wwwroot", "images", "vehicles");
+        Directory.CreateDirectory(uploadsFolder); 
+
+        var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(imageFile.FileName)}".Replace(" ", "");
+
+        var filePath = Path.Combine(uploadsFolder, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
         {
-            var fileName = $"{Guid.NewGuid()} - {Path.GetFileName(imageFile.FileName)}";
-            var filePath = Path.Combine("wwwroot", "images", fileName);
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await imageFile.CopyToAsync(stream);
-            }
-            imagePath = Path.Combine("images", fileName);
+            await imageFile.CopyToAsync(stream);
         }
-        return imagePath!;
+
+        return $"images/{fileName}";
     }
 }

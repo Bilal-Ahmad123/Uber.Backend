@@ -13,7 +13,7 @@ using RiderModel = Rider.Domain.Models.Rider.Rider;
 namespace Rider.Infrastructure.Repository;
 public class RiderRepository(IApplicationDbContext dbContext) : IRiderRepository
 {
-    public async void CreateRider(CreateRiderEvent rider, CancellationToken cancellationToken)
+    public async Task CreateRider(CreateRiderEvent rider, CancellationToken cancellationToken)
     {
         dbContext.Riders.Add(MapRiderEvent(rider));
         await dbContext.SaveChangesAsync(cancellationToken);

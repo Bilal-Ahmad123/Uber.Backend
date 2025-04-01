@@ -1,6 +1,4 @@
   services:
-    uberdb:
-        image: mcr.microsoft.com/mssql/server
     messagebroker:
         image: rabbitmq:management
     distributedcache:

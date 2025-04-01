@@ -9,5 +9,5 @@ using BuildingBlocks.Messaging.Events.Rider;
 namespace Rider.Application.Repository;
 public interface IRiderRepository
 {
-    public void CreateRider(CreateRiderEvent driver, CancellationToken cancellationToken);
+    public Task CreateRider(CreateRiderEvent driver, CancellationToken cancellationToken);
 }

@@ -1,12 +1,4 @@
 services:
-  uberdb:
-    container_name: uberdb
-    environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=SwN12345678
-    restart: always
-    ports:
-      - "1433:1433" 
   messagebroker:
     container_name: messagebroker
     hostname: uber-mq
