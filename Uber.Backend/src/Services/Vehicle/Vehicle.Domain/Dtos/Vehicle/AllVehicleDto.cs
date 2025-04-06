@@ -11,6 +11,7 @@ namespace Vehicle.Domain.Dtos.Vehicle
     int MaxSeats,
     decimal BaseFare,
     decimal RatePerKM,
-    string ImageUrl
+    string ImageUrl,
+    Guid DriverId
    );
 }

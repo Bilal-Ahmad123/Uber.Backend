@@ -5,4 +5,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Rider.Domain.Models.Vehicle;
-public record NearbyVehicleDetails(string VehicleName, string ImageUrl, int MaxSeats, decimal Fare);
+public record NearbyVehicleDetails(string VehicleName, string ImageUrl, int MaxSeats, decimal Fare,string VehicleDescription,int TimeAway);

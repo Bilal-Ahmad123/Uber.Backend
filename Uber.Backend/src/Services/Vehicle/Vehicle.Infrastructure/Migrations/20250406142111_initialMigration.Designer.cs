@@ -12,8 +12,8 @@ using Vehicle.Infrastructure;
 namespace Vehicle.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250322105228_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250406142111_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,10 @@ namespace Vehicle.Infrastructure.Migrations
 
                     b.Property<decimal>("RatePerKM")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("VehicleDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VehicleName")
                         .IsRequired()

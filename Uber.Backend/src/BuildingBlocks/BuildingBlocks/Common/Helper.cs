@@ -14,4 +14,10 @@ public static class Helper
     {
         return $"{httpContext?.Request.Scheme}://192.168.18.65:5196/";
     }
+
+    public static int CalculateTimeAway(double distance)
+    {
+        double timeInMinutes = (distance / Constants.AverageSpeed) * 60;
+        return (int)Math.Round(timeInMinutes);
+    }
 }

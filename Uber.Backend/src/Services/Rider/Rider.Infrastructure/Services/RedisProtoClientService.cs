@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BuildingBlocks.Events;
 using Redis;
 using Rider.Application.Services;
+using Rider.Domain.Models.Rider;
 
 namespace Rider.Infrastructure.Services;
 public class RedisProtoClientService : IRedisProtoClientService
@@ -17,7 +18,7 @@ public class RedisProtoClientService : IRedisProtoClientService
         _redisClient = redisClient;
     }
 
-    public List<Guid> GetNearbyDrivers(UpdateUserLocation riderLocation)
+    public NearbyDriverResponse GetNearbyDrivers(UpdateUserLocation riderLocation)
     {
         var response = _redisClient.GetNearbyDrivers(new NearbyDriversRequest
         {
@@ -25,6 +26,12 @@ public class RedisProtoClientService : IRedisProtoClientService
             Longitude = riderLocation.Longitude,
             UserId = riderLocation.UserId.ToString()
         });
-        return response.DriverIds.Select(d => new Guid(d)).ToList();
+        var driversWithTime = response.DriversWithTimeAway.Select(r =>
+        {
+            return new DriversWithTime(new Guid(r.DriverId), Int32.Parse(r.TimeAway));
+        }).ToList();
+
+        var driverIds = response.DriverIds.Select(d => new Guid(d)).ToList();
+        return new NearbyDriverResponse(driverIds, driversWithTime);
     }
 }

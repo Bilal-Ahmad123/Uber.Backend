@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace BuildingBlocks.Common;
 public static class Constants
 {
-    const string VehicleImagePath = "kjkj";
+    public const string VehicleImagePath = "kjkj";
+    public const int AverageSpeed = 40;
 }

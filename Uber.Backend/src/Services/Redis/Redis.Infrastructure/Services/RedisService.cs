@@ -23,6 +23,7 @@ namespace Redis.Infrastructure.Services
             var message = _redisRepository.GetNearbyDrivers(new BuildingBlocks.Events.UpdateUserLocation(new Guid(request.UserId),request.Latitude,request.Longitude));
             var nearbyDrivers = Helper.Deserializer<NearbyDriverModel>(message);
             var response = new NearbyDriversResponse();
+            response.DriversWithTimeAway.AddRange(nearbyDrivers.DriversWithTimeAway.Select((d => new DriverInfo { DriverId = d.Id.ToString(),TimeAway = d.TimeAway.ToString()})));
             response.DriverIds.AddRange(nearbyDrivers.Drivers.Select(d => d.ToString()));
             return Task.FromResult(response);
         }

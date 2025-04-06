@@ -46,6 +46,10 @@ namespace Vehicle.Infrastructure.Migrations
                     b.Property<decimal>("RatePerKM")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("VehicleDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("VehicleName")
                         .IsRequired()
                         .HasMaxLength(100)

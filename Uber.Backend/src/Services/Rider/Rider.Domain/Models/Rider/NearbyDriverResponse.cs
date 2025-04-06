@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Redis.Domain.Models
+namespace Rider.Domain.Models.Rider
 {
-    public record NearbyDriverModel(Guid UserId, double Latitude, double Longitude, IList<Guid> Drivers,IList<DriversWithTime> DriversWithTimeAway);
+    public record NearbyDriverResponse(IList<Guid> DriverIds,IList<DriversWithTime> DriversWithTimeAway);
     public record DriversWithTime(Guid Id, int TimeAway);
 }

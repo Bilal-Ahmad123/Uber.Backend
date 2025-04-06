@@ -12,7 +12,7 @@ public class GetNearbyRideQueryHandler(IRedisProtoClientService redisProtoClient
     public  Task<GetNearbyRideQueryResult> Handle(GetNearbyRideQuery request, CancellationToken cancellationToken)
     {
        var drivers =  redisProtoClientService.GetNearbyDrivers(new BuildingBlocks.Events.UpdateUserLocation(request.RiderId,request.Latitude,request.Longitude));
-       var vehicles = vehicleProtoClientService.NearbyVehicleDetails(drivers);
+       var vehicles = vehicleProtoClientService.NearbyVehicleDetails(drivers.DriverIds,drivers.DriversWithTimeAway);
        return Task.FromResult(new GetNearbyRideQueryResult(vehicles));
     }
 }

@@ -38,7 +38,12 @@ public class RedisRepository : IRedisRepository
                         UserId = rideRequest.UserId,
                         Latitude = rideRequest.Latitude,
                         Longitude = rideRequest.Longitude,
-                        Drivers = nearbyDrivers.Select(r => r.Member.ToString()).ToList()
+                        Drivers = nearbyDrivers.Select(r => r.Member.ToString()).ToList(),
+                        DriversWithTimeAway = nearbyDrivers.Select(r => new
+                        {
+                            Id = r.Member.ToString(),
+                            TimeAway = Helper.CalculateTimeAway(r.Distance ?? 0.0)
+                        })
                     }
                 );
                 return drivers;

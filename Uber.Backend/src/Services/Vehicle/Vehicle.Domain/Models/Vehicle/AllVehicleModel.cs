@@ -13,12 +13,13 @@ namespace Vehicle.Domain.Models.Vehicle
         public decimal BaseFare { get; set; }
         public decimal RatePerKM { get; set; }
         public string ImageUrl { get; set; } = default!;
-
-        public static AllVehicleModel Create(VehicleId vehicleId, string vehicleName, int maxSeats, decimal baseFare, decimal ratePerKM, string imageUrl)
+        public string VehicleDescription { get; set; } = default!;
+        public static AllVehicleModel Create(VehicleId vehicleId, string vehicleName, int maxSeats, decimal baseFare, decimal ratePerKM, string imageUrl,string vehicleDescription)
         {
             ArgumentNullException.ThrowIfNull(vehicleName);
             ArgumentNullException.ThrowIfNull(imageUrl);
             ArgumentNullException.ThrowIfNull(vehicleId);
+            ArgumentNullException.ThrowIfNull(vehicleDescription);
 
 
             return new AllVehicleModel
@@ -28,7 +29,8 @@ namespace Vehicle.Domain.Models.Vehicle
                 MaxSeats = maxSeats,
                 BaseFare = baseFare,
                 RatePerKM = ratePerKM,
-                ImageUrl = imageUrl
+                ImageUrl = imageUrl,
+                VehicleDescription = vehicleDescription
             };
         }
     }

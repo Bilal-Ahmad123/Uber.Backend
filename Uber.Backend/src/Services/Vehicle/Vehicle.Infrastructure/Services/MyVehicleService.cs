@@ -22,7 +22,8 @@ public class MyVehicleService(IVehicleRepository vehicleRepository,IHttpContextA
             VehicleType = v.VehicleName,
             MaxSeats = v.MaxSeats,
             Fare = (double)v.BaseFare,
-            ImageUrl = baseUrl + v.ImageUrl
+            ImageUrl = baseUrl + v.ImageUrl,
+            DriverId = v.DriverId.ToString()
         }));
         return response;
     }

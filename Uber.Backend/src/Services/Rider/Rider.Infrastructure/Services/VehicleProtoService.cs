@@ -1,4 +1,5 @@
 using Rider.Application.Services;
+using Rider.Domain.Models.Rider;
 using Rider.Domain.Models.Vehicle;
 using Vehicle;
 
@@ -11,7 +12,7 @@ public class VehicleProtoService : IVehicleProtoClientService
     {
         _vehicleServiceClient = vehicleServiceClient;
     }
-    public List<NearbyVehicleDetails> NearbyVehicleDetails(IList<Guid> driverIds)
+    public List<NearbyVehicleDetails> NearbyVehicleDetails(IList<Guid> driverIds, IList<DriversWithTime> driversWithTimeAway)
     {
         var result = _vehicleServiceClient.GetVehicleDetails(new VehicleRequest
         {
@@ -22,9 +23,19 @@ public class VehicleProtoService : IVehicleProtoClientService
             v.VehicleType,
             v.ImageUrl,
             v.MaxSeats,
-            (decimal)v.Fare
+            (decimal)v.Fare,
+            v.VehicleDescription,
+            GetDriverAwayTime(driversWithTimeAway,new Guid(v.DriverId))
         )).ToList();
 
         return vehicles;
     }
+
+    private int GetDriverAwayTime(IList<DriversWithTime> driversWithTimeAway,Guid driverId)
+    {
+       var driver =  driversWithTimeAway.FirstOrDefault(x => x.Id.Equals(driverId));
+       return driver!.TimeAway;
+    }
+
+
 }

@@ -16,6 +16,8 @@ message VehicleResponse{
     double fare = 3;
     int32 maxSeats = 4;
     string imageUrl = 5;
+    string vehicleDescription = 6;
+    string driverId = 7;
 }
 
 message VehicleResponseList {

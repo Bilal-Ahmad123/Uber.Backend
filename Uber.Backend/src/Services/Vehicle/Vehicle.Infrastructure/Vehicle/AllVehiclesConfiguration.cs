@@ -28,5 +28,8 @@ public class AllVehiclesConfiguration : IEntityTypeConfiguration<AllVehicleModel
 
         builder.Property(d => d.ImageUrl)
             .IsRequired(true);
+
+        builder.Property(d => d.VehicleDescription)
+            .IsRequired(true);
     }
 }

@@ -12,6 +12,13 @@ message NearbyDriversRequest {
   string userId = 3;
 }
 
+message DriverInfo {
+    string driverId = 1;    
+    string timeAway = 2;  
+}
+
 message NearbyDriversResponse {
   repeated string driverIds = 1;
+  repeated DriverInfo driversWithTimeAway = 2;
 }
+
