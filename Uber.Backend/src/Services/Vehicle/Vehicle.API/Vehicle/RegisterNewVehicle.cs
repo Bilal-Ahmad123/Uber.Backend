@@ -19,7 +19,9 @@ namespace Vehicle.API.Endpoints.Vehicle
                    int.Parse(form["maxSeats"]!),
                    decimal.Parse(form["baseFare"]!),
                    decimal.Parse(form["ratePerKM"]!),
-                   form.Files["image"]!
+                   form.Files["image"]!,
+                   form["vehicleDescription"].ToString()
+
                 );
                 var result = await sender.Send(requestCommand);
                 var response = result.Adapt<RegisterNewVehicleResponse>();

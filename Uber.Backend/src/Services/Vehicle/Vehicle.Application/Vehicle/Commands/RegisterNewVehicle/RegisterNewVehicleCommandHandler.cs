@@ -23,7 +23,8 @@ public class RegisterNewVehicleCommandHandler(IAllVehiclesRepository repository,
             BaseFare = command.BaseFare,
             RatePerKM = command.RatePerKM,
             MaxSeats = command.MaxSeats,
-            ImageUrl = filePath
+            ImageUrl = filePath,
+            VehicleDescription = command.VehicleDescription
         };
     }
 }

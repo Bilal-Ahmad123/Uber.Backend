@@ -11,7 +11,8 @@ public record RegisterNewVehicleCommand(
     int MaxSeats,
     decimal BaseFare,
     decimal RatePerKM,
-    IFormFile ImageUrl
+    IFormFile ImageUrl,
+    string VehicleDescription
 ):ICommand<RegisterNewVehicleCommandResult>;
 
 public record RegisterNewVehicleCommandResult(
