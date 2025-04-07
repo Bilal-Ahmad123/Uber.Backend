@@ -12,6 +12,7 @@ namespace Vehicle.Domain.Dtos.Vehicle
     decimal BaseFare,
     decimal RatePerKM,
     string ImageUrl,
-    Guid DriverId
+    Guid DriverId,
+    string VehicleDescription
    );
 }

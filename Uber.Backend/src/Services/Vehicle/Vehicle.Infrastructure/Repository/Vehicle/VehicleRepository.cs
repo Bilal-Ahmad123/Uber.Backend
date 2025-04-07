@@ -32,7 +32,8 @@ public class VehicleRepository(IApplicationDbContext dbContext,IAllVehiclesRepos
                 v.AllVehicleModel.BaseFare,
                 v.AllVehicleModel.RatePerKM,
                 v.AllVehicleModel.ImageUrl,
-                v.DriverId
+                v.DriverId,
+                v.AllVehicleModel.VehicleDescription
             )).ToListAsync();
 
     }
