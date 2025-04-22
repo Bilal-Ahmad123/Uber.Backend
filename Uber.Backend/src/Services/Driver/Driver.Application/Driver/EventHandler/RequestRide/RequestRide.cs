@@ -9,7 +9,7 @@ using Driver.Domain.Models.RiderLocation;
 using Mapster;
 using MassTransit;
 
-namespace Driver.Infrastructure.Consumers.RideRequest;
+namespace Driver.Application.Driver.EventHandler.RequestRide;
 public class RideRequest(ISignalRService signalRService) : IConsumer<DriverRideRequestEvent>
 {
     public Task Consume(ConsumeContext<DriverRideRequestEvent> context)

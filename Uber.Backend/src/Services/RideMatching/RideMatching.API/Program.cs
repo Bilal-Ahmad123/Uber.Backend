@@ -1,21 +1,22 @@
 using RideMatching.API;
 using BuildingBlocks.Messaging.MassTransit;
 using System.Reflection;
+using RideMatching.Application;
+using RideMatching.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddApiService(builder.Configuration);
-builder.Services.AddMessageBroker(builder.Configuration, Assembly.GetExecutingAssembly());
+builder.Services.AddApiService(builder.Configuration)
+    .AddInfrastructureService(builder.Configuration)
+    .AddApplicationLayer(builder.Configuration);
 
 var app = builder.Build();
 
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
-app.MapControllers();
 
 app.Run();

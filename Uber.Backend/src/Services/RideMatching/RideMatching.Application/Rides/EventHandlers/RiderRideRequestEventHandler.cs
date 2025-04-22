@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Messaging.Events;
+using BuildingBlocks.Models.Driver;
 using Mapster;
 using MassTransit;
 using MediatR;
@@ -6,13 +7,12 @@ using RideMatching.Application.Rides.Services;
 
 namespace RideMatching.Application.Rides.EventHandlers
 {
-    public class RiderRideRequestEventHandler(IPublishEndpoint publishEndpoint,IRedisService redisService) : IConsumer<RequestRideEvent>
+    public class RiderRideRequestEventHandler(IPublishEndpoint publishEndpoint,IRedisProtoClientService redisProtoClientService) : IConsumer<RequestRideEvent>
     {
         public async Task Consume(ConsumeContext<RequestRideEvent> context)
         {
-            redisService.StoreRideRequest(context.Message);
-            IList<Guid> nearbyDrivers = await redisService.FindNearbyDrivers(context.Message.RiderId);
-            await publishEndpoint.Publish(MapDriverRideRequestEvent(context.Message,nearbyDrivers));
+            NearbyDriverResponse nearbyDrivers = redisProtoClientService.GetNearbyDrivers(new BuildingBlocks.Events.UpdateUserLocation(context.Message.RiderId, context.Message.PickUpLocation!.Latitude, context.Message.PickUpLocation.Longitude));
+            await publishEndpoint.Publish(MapDriverRideRequestEvent(context.Message,nearbyDrivers.DriverIds));
         }
 
         private DriverRideRequestEvent MapDriverRideRequestEvent(RequestRideEvent requestRide , IList<Guid> nearbyDrivers)

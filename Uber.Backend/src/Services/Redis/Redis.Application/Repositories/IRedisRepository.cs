@@ -19,4 +19,5 @@ public interface IRedisRepository
     public Task UpdateRiderLocation(UpdateUserLocation riderLocation);
     public Task GetRiderLocation(Guid riderId);
     public Task DeleteRiderLocation(Guid riderId);
+    public void StoreRideRequest(string rideId, string rideRequest);
 }

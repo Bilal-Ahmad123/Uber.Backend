@@ -111,4 +111,8 @@ public class RedisRepository : IRedisRepository
         await _redis.GeoAddAsync("riders:locations", riderLocation.Longitude, riderLocation.Latitude, riderLocation.UserId.ToString());
     }
 
+    public void StoreRideRequest(string rideId, string rideRequest)
+    {
+        _redis.StringSet(rideId, rideRequest);
+    }
 }

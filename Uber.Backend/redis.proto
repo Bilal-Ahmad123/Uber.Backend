@@ -1,9 +1,11 @@
 syntax = "proto3";
+import "google/protobuf/empty.proto";
 
 package redis;
 
 service RedisService {
   rpc GetNearbyDrivers (NearbyDriversRequest) returns (NearbyDriversResponse);
+  rpc StoreRideRequest (RideRequest) returns (google.protobuf.Empty);
 }
 
 message NearbyDriversRequest {
@@ -22,3 +24,19 @@ message NearbyDriversResponse {
   repeated DriverInfo driversWithTimeAway = 2;
 }
 
+message RideRequest {
+    string riderId = 1;
+    string rideId = 2;
+    PickUpLocation pickupLocation = 3;
+    DropOffLocation dropOffLocation = 4;
+}
+
+message PickUpLocation {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message DropOffLocation {
+    double latitude = 1;
+    double longitude = 2;
+}

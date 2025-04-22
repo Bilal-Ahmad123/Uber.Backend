@@ -17,7 +17,7 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
             {
                 try
                 {
-                    await hubContext.Clients.Client(connectionId).SendAsync("DriverLocationUpdate",
+                    await hubContext.Clients.Client(connectionId).SendAsync("SendRideRequestToDrivers",
                         riderRequestedLocation.RiderId,
                         riderRequestedLocation.PickUpLocation.Longitude,
                         riderRequestedLocation.PickUpLocation.Latitude,
