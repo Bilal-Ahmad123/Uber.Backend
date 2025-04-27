@@ -1,4 +1,7 @@
-﻿using BuildingBlocks.Events;
+﻿using BuildingBlocks.Common;
+using BuildingBlocks.Events;
+using BuildingBlocks.Messaging.Events;
+using BuildingBlocks.Models.Ride;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Rider.Application.Common;
@@ -34,14 +37,20 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
         }
     }
 
-    public async void NotifyRiderRideAccepted(Guid riderId)
+    public async void NotifyRiderRideAccepted(NotifyRiderRideAcceptedEvent ride)
     {
-        var connectionId = connectionManager.GetConnectionId(riderId);
+        var connectionId = connectionManager.GetConnectionId(ride.RiderId);
         if (connectionId != null)
         {
             try
             {
-                await hubContext.Clients.Client(connectionId).SendAsync("RideAccepted", riderId);
+                await hubContext.Clients.Client(connectionId).SendAsync("RideAccepted", 
+                    ride.RiderId,
+                    ride.DriverId,
+                    ride.RideId,
+                    ride.Latitude,
+                    ride.Longitude
+                    );
             }
             catch (Exception e)
             {
@@ -50,14 +59,19 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
         }
     }
 
-    public async void SendTripLocationToRiders(ContinuousTripLocation tripLocation)
+    public async void SendTripLocationToRiders(ContinuousTripUpdates tripLocation)
     {
         var connectionId = connectionManager.GetConnectionId(tripLocation.RiderId);
         if (connectionId != null)
         {
             try
             {
-                await hubContext.Clients.Client(connectionId).SendAsync("TripLocation", tripLocation.RideId);
+                await hubContext.Clients.Client(connectionId).SendAsync(SignalRMethods.TRIP_UPDATES,
+                    tripLocation.RideId,
+                    tripLocation.DriverId,
+                    tripLocation.Latitude,
+                    tripLocation.Longitude
+                );
             }
             catch (Exception e)
             {

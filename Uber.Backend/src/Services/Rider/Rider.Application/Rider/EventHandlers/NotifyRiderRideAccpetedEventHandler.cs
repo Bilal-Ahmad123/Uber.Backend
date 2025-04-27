@@ -12,7 +12,7 @@ public class NotifyRiderRideAccpetedEventHandler(ISignalRService signalRService)
 {
     public Task Consume(ConsumeContext<NotifyRiderRideAcceptedEvent> context)
     {
-        signalRService.NotifyRiderRideAccepted(context.Message.RiderId);
+        signalRService.NotifyRiderRideAccepted(context.Message);
         return Task.CompletedTask;
     }
 }

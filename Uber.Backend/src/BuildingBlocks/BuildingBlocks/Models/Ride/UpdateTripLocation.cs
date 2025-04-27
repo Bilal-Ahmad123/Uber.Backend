@@ -5,4 +5,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuildingBlocks.Models.Ride;
-public record AcceptRideRequest(Guid DriverId, Guid RideId, double Latitude, double Longitude, Guid RiderId);
+public record UpdateTripLocation(Guid DriverId, Guid RiderId, double Latitude, double Longitude);
+

@@ -115,4 +115,8 @@ public class RedisRepository : IRedisRepository
     {
         _redis.StringSet(rideId, rideRequest);
     }
+    public void LockRideRequest(string rideId)
+    {
+        //_redis.Lo
+    }
 }

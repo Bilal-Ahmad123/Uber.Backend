@@ -12,7 +12,7 @@ public static class Helper
 
     public static string GetVehicleUrl(HttpContext? httpContext)
     {
-        return $"{httpContext?.Request.Scheme}:/192.168.43.14:5196/";
+        return $"{httpContext?.Request.Scheme}:/192.168.18.65:5196/";
     }
 
     public static int CalculateTimeAway(double distance)

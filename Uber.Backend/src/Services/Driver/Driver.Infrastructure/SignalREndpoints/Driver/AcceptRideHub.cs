@@ -9,11 +9,8 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Driver.Infrastructure.SignalREndpoints.Driver
 {
-    public class AcceptRideHub(ISender sender) : Hub
+    public class AcceptRideHub() : Hub
     {
-        public async Task AcceptRide(Guid rideId, Guid driverId)
-        {
-            await sender.Send(new AcceptRideCommand(new BuildingBlocks.Models.Ride.AcceptRideRequest(driverId, rideId)));
-        }
+
     }
 }

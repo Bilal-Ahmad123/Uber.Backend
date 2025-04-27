@@ -22,7 +22,8 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
                         riderRequestedLocation.PickUpLocation.Longitude,
                         riderRequestedLocation.PickUpLocation.Latitude,
                         riderRequestedLocation.DropOffLocation.Longitude,
-                        riderRequestedLocation.DropOffLocation.Latitude
+                        riderRequestedLocation.DropOffLocation.Latitude,
+                        riderRequestedLocation.RideId
                      );
                 }
                 catch (Exception e)

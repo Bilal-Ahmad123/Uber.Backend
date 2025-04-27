@@ -30,7 +30,7 @@ namespace Rider.Infrastructure
             });
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddSingleton<IConnectionManager, ConnectionManager>();
-            services.AddSingleton<IRiderLocationService, RiderLocationService>();
+            services.AddSingleton<IRiderRedisService, RiderRedisService>();
             services.AddSingleton<ISignalRService, SignalRService>();
             services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect("localhost:6379"));
             services.AddStackExchangeRedisCache(options =>
@@ -38,6 +38,7 @@ namespace Rider.Infrastructure
                 options.Configuration = configuration.GetConnectionString("Redis");
             });
             services.AddHostedService<RiderBackgroundService>();
+            services.AddHostedService<TripBackgroundService>();
             services.AddScoped<IRide, Ride>();
             services.AddScoped<IRiderRepository, RiderRepository>();
             services.AddSingleton<IRedisProtoClientService, RedisProtoClientService>();

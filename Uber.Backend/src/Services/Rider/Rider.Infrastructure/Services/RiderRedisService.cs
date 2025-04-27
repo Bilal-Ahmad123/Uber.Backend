@@ -6,12 +6,12 @@ using Rider.Application.Data.Services;
 using StackExchange.Redis;
 
 namespace Rider.Infrastructure.Services;
-public class RiderLocationService:IRiderLocationService
+public class RiderRedisService:IRiderRedisService
 {
     private readonly IDatabase _redis;
     private readonly ISubscriber _pubsub;
     private readonly ILogger _logger;
-    public RiderLocationService(IConnectionMultiplexer connection,ILogger<RiderLocationService> logger)
+    public RiderRedisService(IConnectionMultiplexer connection,ILogger<RiderRedisService> logger)
     {
         _redis = connection.GetDatabase();
         _pubsub = connection.GetSubscriber();

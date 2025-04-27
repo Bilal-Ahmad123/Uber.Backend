@@ -12,6 +12,7 @@ namespace RideMatching.Application.Rides.EventHandlers
         public async Task Consume(ConsumeContext<RequestRideEvent> context)
         {
             NearbyDriverResponse nearbyDrivers = redisProtoClientService.GetNearbyDrivers(new BuildingBlocks.Events.UpdateUserLocation(context.Message.RiderId, context.Message.PickUpLocation!.Latitude, context.Message.PickUpLocation.Longitude));
+            redisProtoClientService.StoreRideRequest(context.Message);
             await publishEndpoint.Publish(MapDriverRideRequestEvent(context.Message,nearbyDrivers.DriverIds));
         }
 

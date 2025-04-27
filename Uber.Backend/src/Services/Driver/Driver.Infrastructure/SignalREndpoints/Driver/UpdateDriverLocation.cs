@@ -1,6 +1,10 @@
 ﻿using BuildingBlocks.Dtos;
+using BuildingBlocks.Models.Ride;
 using Driver.Application.ConnectionManager;
 using Driver.Application.Driver.Commands.UpdateDriverLocation;
+using Driver.Application.Ride.Commands.AcceptRide;
+using Driver.Application.Ride.Commands.SendContinuousTripLocation;
+using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -13,6 +17,17 @@ public class UpdateDriverLocationHub(ISender sender, ILogger<UpdateDriverLocatio
     {
         await sender.Send(new UpdateDriverLocationCommand(locationDto));    
     }
+
+    public async Task AcceptRide(AcceptRideRequest ride)
+    {
+        await sender.Send(new AcceptRideCommand(ride));
+    }
+
+    public async Task SendTripLocationUpdates(ContinuousTripUpdates trip)
+    {
+        await sender.Send(new SendContinuousRideLocationCommand(trip));
+    }
+
     public override Task OnConnectedAsync()
     {
         var httpContext = Context.GetHttpContext();

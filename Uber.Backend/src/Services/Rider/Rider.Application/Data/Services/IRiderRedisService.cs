@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BuildingBlocks.Events;
 
 namespace Rider.Application.Data.Services;
-public interface IRiderLocationService
+public interface IRiderRedisService
 {
     void SendRiderLocationUpdate(UpdateUserLocation driverLocation);
     void GetDriverLocationUpdate();

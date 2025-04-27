@@ -5,4 +5,4 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BuildingBlocks.Messaging.Events;
-public record NotifyRiderRideAcceptedEvent(Guid RiderId, Guid DriverId);
+public record NotifyRiderRideAcceptedEvent(Guid RiderId, Guid DriverId, Guid RideId, double Latitude, double Longitude);
