@@ -23,6 +23,7 @@ public static class DependencyInjection
         services.AddSingleton<IConnectionManager, ConnectionManager>();
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         services.AddSingleton<ISignalRService, SignalRService>();
+        services.AddSingleton<IDriverRedisService, DriverRedisService>();
         services.AddScoped<IDriverRepository, DriverRepository>();
         services.AddHostedService<DriverRedisBackgroundService>();
         return services;

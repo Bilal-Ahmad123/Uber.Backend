@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BuildingBlocks.Messaging.Events;
+using BuildingBlocks.Models.Ride;
 using Mapster;
 using MassTransit;
 using Rider.Application.Data.Services;
@@ -15,7 +16,7 @@ namespace Rider.Application.Rider.EventHandlers
     {
         public Task Consume(ConsumeContext<SendContinuousRideLocationEvent> context)
         {
-            signalRService.SendTripLocationToRiders(context.Message.Adapt<ContinuousTripLocation>());
+            signalRService.SendTripLocationToRiders(context.Message.Adapt<ContinuousTripUpdates>());
             return Task.CompletedTask;
         }
     }

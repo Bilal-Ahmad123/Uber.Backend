@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace BuildingBlocks.Common;
 public static class SignalRMethods
 {
-    public const string TRIP_UPDATES = "Trip_Updates";
+    public const string TRIP_UPDATES = "TripUpdates";
 }
