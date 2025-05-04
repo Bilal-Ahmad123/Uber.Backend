@@ -12,6 +12,8 @@ namespace BuildingBlocks.Models.Ride
         Guid RiderId,
         double Latitude,
         double Longitude,
-        string VehicleType
+        string VehicleType,
+        int Time,
+        int Distance
     );
 }

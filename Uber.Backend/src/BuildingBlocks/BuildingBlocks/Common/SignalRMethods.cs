@@ -8,4 +8,7 @@ namespace BuildingBlocks.Common;
 public static class SignalRMethods
 {
     public const string TRIP_UPDATES = "TripUpdates";
+
+    //Yeah i know its too long
+    public const string NOTIFY_RIDER_DRIVER_REACHED_PICKUP_SPOT = "DriverReachedPickUpSpot";
 }

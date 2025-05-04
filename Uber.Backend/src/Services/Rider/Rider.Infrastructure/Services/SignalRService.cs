@@ -70,8 +70,31 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
                     tripLocation.RideId,
                     tripLocation.DriverId,
                     tripLocation.Latitude,
-                    tripLocation.Longitude
+                    tripLocation.Longitude,
+                    tripLocation.Time,
+                    tripLocation.Distance
                 );
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.ToString());
+            }
+        }
+    }
+
+    public async void NotifyRiderDriverReached(ReachedPickUpSpotEvent ride)
+    {
+        var connectionId = connectionManager.GetConnectionId(ride.RiderId);
+        if (connectionId != null)
+        {
+            try
+            {
+                await hubContext.Clients.Client(connectionId).SendAsync(SignalRMethods.NOTIFY_RIDER_DRIVER_REACHED_PICKUP_SPOT,
+                    ride.RiderId,
+                    ride.DriverId,
+                    ride.RideId,
+                    ride.Reached
+                    );
             }
             catch (Exception e)
             {

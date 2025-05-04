@@ -1,9 +1,11 @@
 ﻿using BuildingBlocks.Dtos;
 using BuildingBlocks.Models.Ride;
+using BuildingBlocks.Models.Shared;
 using Driver.Application.ConnectionManager;
 using Driver.Application.Driver.Commands.UpdateDriverLocation;
 using Driver.Application.Ride.Commands.AcceptRide;
 using Driver.Application.Ride.Commands.SendContinuousTripLocation;
+using Driver.Application.Trip.ReachedPickUpSpot;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
@@ -26,6 +28,11 @@ public class UpdateDriverLocationHub(ISender sender, ILogger<UpdateDriverLocatio
     public async Task SendTripLocationUpdates(ContinuousTripUpdates trip)
     {
         await sender.Send(new SendContinuousRideLocationCommand(trip));
+    }
+
+    public async Task ReachedRider(ReachedPickUpSpotModel reached)
+    {
+        await sender.Send(new ReachedPickUpSpotCommand(reached));
     }
 
     public override Task OnConnectedAsync()

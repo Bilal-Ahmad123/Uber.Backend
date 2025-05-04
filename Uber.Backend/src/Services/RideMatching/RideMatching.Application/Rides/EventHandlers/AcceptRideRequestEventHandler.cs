@@ -11,12 +11,11 @@ using RideMatching.Application.Rides.Services;
 namespace RideMatching.Application.Rides.EventHandlers;
 public class AcceptRideRequestEventHandler(IPublishEndpoint publishEndpoint) : IConsumer<AcceptRideRequestEvent>
 {
-    public Task Consume(ConsumeContext<AcceptRideRequestEvent> context)
+    public async Task Consume(ConsumeContext<AcceptRideRequestEvent> context)
     {
 
         //Adavanced Scenario for future
         //redisService.LockRideRequest(context.Message.RideId, context.Message.DriverId);
-        publishEndpoint.Publish(context.Message.Adapt<NotifyRiderRideAcceptedEvent>());
-        return Task.CompletedTask;
+        await publishEndpoint.Publish(context.Message.Adapt<NotifyRiderRideAcceptedEvent>());
     }
 }

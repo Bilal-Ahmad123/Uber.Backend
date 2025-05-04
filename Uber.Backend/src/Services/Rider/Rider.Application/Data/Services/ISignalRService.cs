@@ -13,4 +13,5 @@ public interface ISignalRService
     void SendDriverLocationToRiders(DriverPositionWithRiders driverPositionWithRiders);
     void NotifyRiderRideAccepted(NotifyRiderRideAcceptedEvent ride);
     void SendTripLocationToRiders(ContinuousTripUpdates tripLocation);
+    void NotifyRiderDriverReached(ReachedPickUpSpotEvent spot);
 }
