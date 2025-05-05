@@ -35,6 +35,11 @@ public class UpdateDriverLocationHub(ISender sender, ILogger<UpdateDriverLocatio
         await sender.Send(new ReachedPickUpSpotCommand(reached));
     }
 
+    public async Task ReachedDropOff()
+    {
+
+    }
+
     public override Task OnConnectedAsync()
     {
         var httpContext = Context.GetHttpContext();
