@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Rider.Application.Common;
 using Rider.Application.Data.Services;
 using Rider.Domain.Models;
+using Rider.Domain.Models.Rider;
 using Rider.Infrastructure.SignalREndpoints.Rider;
 
 
@@ -95,6 +96,27 @@ public class SignalRService(IConnectionManager connectionManager, IHubContext<Up
                     ride.RideId,
                     ride.Reached
                     );
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.ToString());
+            }
+        }
+    }
+
+    public async void NotidyRiderDriverReachedDropOff(ReachedDropOffSpotEvent spot)
+    {
+        var connectionId = connectionManager.GetConnectionId(spot.RiderId);
+        if (connectionId != null)
+        {
+            try
+            {
+                await hubContext.Clients.Client(connectionId).SendAsync(SignalRMethods.NOTIFY_RIDER_DRIVER_REACHED_DROPOFF_SPOT,
+                spot.RiderId,
+                spot.DriverId,
+                spot.RideId,
+                spot.Reached
+                );
             }
             catch (Exception e)
             {
