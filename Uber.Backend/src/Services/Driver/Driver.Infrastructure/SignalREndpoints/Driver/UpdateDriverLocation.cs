@@ -5,6 +5,7 @@ using Driver.Application.ConnectionManager;
 using Driver.Application.Driver.Commands.UpdateDriverLocation;
 using Driver.Application.Ride.Commands.AcceptRide;
 using Driver.Application.Ride.Commands.SendContinuousTripLocation;
+using Driver.Application.Trip.ReachedDropOffSpot;
 using Driver.Application.Trip.ReachedPickUpSpot;
 using Mapster;
 using MediatR;
@@ -35,9 +36,9 @@ public class UpdateDriverLocationHub(ISender sender, ILogger<UpdateDriverLocatio
         await sender.Send(new ReachedPickUpSpotCommand(reached));
     }
 
-    public async Task ReachedDropOff()
+    public async Task ReachedDropOff(ReachedDropOffSpotModel reached)
     {
-
+        await sender.Send(new ReachedDropOffSpotCommand(reached));
     }
 
     public override Task OnConnectedAsync()

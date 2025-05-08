@@ -9,5 +9,5 @@ public record ReachedPickUpSpotModel(
     Guid RiderId,
     Guid DriverId,
     Guid RideId,
-    string Reached
+    bool Reached
 );
